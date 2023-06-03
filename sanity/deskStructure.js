@@ -1,30 +1,36 @@
 import { settingsMenu } from './desk/settings';
 import { pagesMenu } from './desk/pages';
 import { menusMenu } from './desk/menus';
+import { worksMenu } from './desk/works';
 
 const hiddenDocTypes = (listItem) =>
 	![
-		'page',
-		'filter',
 		'solidColor',
+		'menu',
+		'tag',
+
+		'work',
+
+		'homepage',
+		'about',
+		'workIndex',
 
 		'generalSettings',
-		'cookieSettings',
-		'promoSettings',
 		'headerSettings',
 		'footerSettings',
 		'seoSettings',
 
-		'menu',
 		'siteSettings',
 		'media.tag', // for media plugin
 	].includes(listItem.getId());
 
-export default (S) =>
+export default (S, context) =>
 	S.list()
 		.title('Website')
 		.items([
 			pagesMenu(S),
+			S.divider(),
+			worksMenu(S, context),
 			S.divider(),
 			menusMenu(S),
 			S.divider(),

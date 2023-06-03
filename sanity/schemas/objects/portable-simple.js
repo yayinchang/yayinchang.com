@@ -1,4 +1,10 @@
-import { Button } from '../../components/block-renders';
+import {
+	Header1,
+	Header2,
+	Header3,
+	Highlight,
+} from '@/sanity/components/block-renders';
+import { SparkleIcon } from '@sanity/icons';
 
 export default {
 	title: 'Portable Text',
@@ -8,12 +14,57 @@ export default {
 		{
 			title: 'Block',
 			type: 'block',
-			styles: [{ title: 'Paragraph', value: 'normal' }],
+			styles: [
+				{ title: 'Paragraph', value: 'normal' },
+				{
+					title: 'H1',
+					value: 'h1',
+					component: Header1,
+				},
+				{
+					title: 'H1 (mimic)',
+					value: 'h1mock',
+					component: Header1,
+				},
+				{
+					title: 'H2',
+					value: 'h2',
+					component: Header2,
+				},
+				{
+					title: 'H2 (mimic)',
+					value: 'h2mock',
+					component: Header2,
+				},
+				{
+					title: 'H3',
+					value: 'h3',
+					component: Header3,
+				},
+				{
+					title: 'H3 (mimic)',
+					value: 'h3mock',
+					component: Header3,
+				},
+			],
 			lists: [],
 			marks: {
 				decorators: [
 					{ title: 'Strong', value: 'strong' },
 					{ title: 'Emphasis', value: 'em' },
+					{
+						title: 'Highlight',
+						value: 'highlight',
+						icon: SparkleIcon,
+						component: Highlight,
+					},
+				],
+				annotations: [
+					{
+						title: 'Link',
+						name: 'link',
+						type: 'link',
+					},
 				],
 			},
 		},

@@ -4,8 +4,9 @@ import { Card, Stack, Text } from '@sanity/ui';
 import {
 	HomeIcon,
 	MasterDetailIcon,
-	DocumentIcon,
+	CaseIcon,
 	WarningOutlineIcon,
+	UserIcon,
 } from '@sanity/icons';
 import { sanityClient } from '@/sanity/lib/client';
 
@@ -93,27 +94,52 @@ export const pagesMenu = (S) => {
 			S.list()
 				.title('Pages')
 				.items([
-					currentHomePage(S),
-					currentErrorPage(S),
 					S.listItem()
-						.title('Other Pages')
-						.schemaType('page')
+						.title('Homepage')
 						.child(
-							S.documentTypeList('page')
-								.title('Other Pages')
-								.filter(
-									`_type == "page" && !(_id in [
-                *[_type == "generalSettings"][0].home._ref,
-                *[_type == "generalSettings"][0].error._ref ])`
-								)
-								.child((documentId) =>
-									S.document().documentId(documentId).schemaType('page')
-								)
-								.canHandleIntent(
-									(intent, { type }) =>
-										['create', 'edit'].includes(intent) && type === 'page'
-								)
-						),
+							S.editor()
+								.id('homepage')
+								.schemaType('homepage')
+								.documentId('homepage')
+						)
+						.icon(HomeIcon),
+					S.divider(),
+					S.listItem()
+						.title('About')
+						.child(
+							S.editor().id('about').schemaType('about').documentId('about')
+						)
+						.icon(UserIcon),
+					S.divider(),
+					S.listItem()
+						.title('Work')
+						.child(
+							S.editor()
+								.id('workIndex')
+								.schemaType('workIndex')
+								.documentId('workIndex')
+						)
+						.icon(CaseIcon),
+					S.divider(),
+					// S.listItem()
+					// 	.title('Other Pages')
+					// 	.schemaType('page')
+					// 	.child(
+					// 		S.documentTypeList('page')
+					// 			.title('Other Pages')
+					// 			.filter(
+					// 				`_type == "page" && !(_id in [
+					//       *[_type == "generalSettings"][0].home._ref,
+					//       *[_type == "generalSettings"][0].error._ref ])`
+					// 			)
+					// 			.child((documentId) =>
+					// 				S.document().documentId(documentId).schemaType('page')
+					// 			)
+					// 			.canHandleIntent(
+					// 				(intent, { type }) =>
+					// 					['create', 'edit'].includes(intent) && type === 'page'
+					// 			)
+					// 	),
 				])
 		);
 };

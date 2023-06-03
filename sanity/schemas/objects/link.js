@@ -18,7 +18,7 @@ export default {
 			title: 'Internal Page',
 			name: 'page',
 			type: 'reference',
-			to: [{ type: 'page' }],
+			to: [{ type: 'homepage' }, { type: 'about' }, { type: 'workIndex' }],
 			hidden: ({ parent, value }) => {
 				if (!value && parent?.url) {
 					return true;

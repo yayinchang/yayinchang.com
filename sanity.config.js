@@ -26,7 +26,7 @@ const singletons = [
 
 export default defineConfig({
 	basePath: '/sanity',
-	title: 'Starter Template',
+	title: 'yayinchang.com',
 	projectId,
 	dataset,
 	plugins: [

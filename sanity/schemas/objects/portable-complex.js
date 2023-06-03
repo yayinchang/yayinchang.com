@@ -82,7 +82,7 @@ export default {
 		},
 		customImage(),
 		{
-			type: 'horizontalRule',
+			type: 'horizontalRuler',
 		},
 	],
 };

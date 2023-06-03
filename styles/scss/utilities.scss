@@ -78,8 +78,8 @@
 	--cr-white: #ffffff;
 	--cr-subdued: #e2e2e2;
 	--cr-primary: #009dae;
-	--cr-primary-rgb: 0, 157, 174;
-	--cr-secondary: #78909c;
+	--cr-secondary: #546e7a;
+	--cr-light: #78909c;
 
 	--t-heading-1: 400 4rem/4.5rem 'Poppins', Helvetica, sans-serif;
 	--t-heading-2: 400 2.25rem/3.25rem 'Poppins', Helvetica, sans-serif;
@@ -116,6 +116,7 @@
 		--t-heading-2: 400 2rem/2.5rem 'Poppins', Helvetica, sans-serif;
 		--t-heading-3: 400 1.75rem/2.5rem 'Poppins', Helvetica, sans-serif;
 		--t-body: 400 1rem/2rem 'Poppins', Helvetica, sans-serif;
+		--t-label: 600 0.75rem/1rem 'Poppins', Helvetica, sans-serif;
 
 		--s-gutter: 1.5rem;
 		--s-gutter-lg: 2rem;
@@ -157,6 +158,9 @@ html {
 .cr-secondary {
 	color: var(--cr-secondary);
 }
+.cr-light {
+	color: var(--cr-light);
+}
 
 .bg-black {
 	background-color: var(--cr-black);
@@ -172,6 +176,9 @@ html {
 }
 .bg-secondary {
 	background-color: var(--cr-secondary);
+}
+.bg-light {
+	background-color: var(--cr-light);
 }
 /*	U3 COLOR - END	*/
 
@@ -398,6 +405,18 @@ blockquote {
 
 .gap-gutter {
 	gap: var(--s-gutter);
+}
+
+.gap-1 {
+	gap: 1rem;
+}
+
+.gap-2 {
+	gap: 2rem;
+}
+
+.gap-3 {
+	gap: 3rem;
 }
 
 .p-fill {

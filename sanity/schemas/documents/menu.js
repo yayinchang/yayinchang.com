@@ -11,20 +11,10 @@ export default {
 			type: 'string',
 		},
 		{
-			title: 'Slug',
-			name: 'slug',
-			type: 'slug',
-			description: 'required',
-			options: {
-				source: 'title',
-				maxLength: 30,
-			},
-		},
-		{
 			title: 'Nav Items',
 			name: 'items',
 			type: 'array',
-			of: [{ type: 'navItem' }, { type: 'navDropdown' }],
+			of: [{ type: 'navItem' }],
 		},
 	],
 	preview: {
