@@ -190,70 +190,19 @@ export const site = `
   "site": {
     "title": *[_type == "generalSettings"][0].siteTitle,
     "rootDomain": *[_type == "generalSettings"][0].siteURL,
-    "cookieConsent": *[_type == "cookieSettings"][0]{
-      enabled,
-      message,
-      "link": link->{"type": _type, "slug": slug.current}
-    },
     "header": *[_type == "headerSettings"][0]{
-      "promo": *[_type == "promoSettings"][0]{
-        enabled,
-        display,
-        text,
-        "link": link->{
-          ${page}
-        }
-      },
-      menuDesktop->{
+      menu->{
         ${menu}
       },
-      menuMobilePrimary->{
-        ${menu}
-      },
-      menuMobileSecondary->{
-        ${menu}
-      }
     },
-   "footer": *[_type == "footerSettings"][0]{
-      "blocks": [
-        {
-          "title": blockTitle1,
-          newsletter{
-            "id": "footer",
-            klaviyoListID,
-            submit,
-            successMsg[]{
-              ${ptContent}
-            },
-            errorMsg[]{
-              ${ptContent}
-            },
-            terms[]{
-              ${ptContent}
-            }
-          }
-        },
-        {
-          "title": blockTitle2,
-          "menu": blockMenu2->{
-            ${menu}
-          }
-        },
-        {
-          "title": blockTitle3,
-          "menu": blockMenu3->{
-            ${menu}
-          }
-        },
-        {
-          "title": blockTitle4,
-          social[]{
-            icon,
-            url
-          }
-        }
-      ],
-      "siteCopyright": *[_type == "footerSettings"][0].siteCopyright
+   	"footer": *[_type == "footerSettings"][0]{
+			"title": *[_type == "generalSettings"][0].siteTitle,
+			siteCopyright,
+			social[]{
+				_key,
+				icon,
+				url
+			}
     },
     "seo": *[_type == "seoSettings"][0]{
       metaTitle,
@@ -267,6 +216,5 @@ export const site = `
     },
     "gtmID": *[_type == "generalSettings"][0].gtmID,
     "gaID": *[_type == "generalSettings"][0].gaID,
-    "klaviyoAccountID": *[_type == "generalSettings"][0].klaviyoAccountID,
   }
 `;

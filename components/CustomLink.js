@@ -44,7 +44,7 @@ const CustomLink = ({ link, children, classNames, ...rest }) => {
 				})}
 				{...rest}
 			>
-				{link.title || children}
+				{children || link.title}
 			</NextLink>
 		);
 	}

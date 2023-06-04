@@ -1,7 +1,6 @@
 import React, { useEffect, forwardRef } from 'react';
 import { useRouter } from 'next/router';
-import Menu from '@/components/Menu';
-import SvgIcon from '@/components/SvgIcons';
+import Link from 'next/link';
 import {
 	AnimatePresence,
 	domAnimation,
@@ -10,6 +9,7 @@ import {
 } from 'framer-motion';
 import { removeQueryString } from '@/lib/helpers';
 import { domTransitionAnim } from '@/lib/animate';
+import SvgIcon from '@/components/SvgIcons';
 
 const Footer = forwardRef(function Footer(props, ref) {
 	const { data = {} } = props;
@@ -38,44 +38,28 @@ const Footer = forwardRef(function Footer(props, ref) {
 						variants={domTransitionAnim}
 						className="global-footer"
 					>
-						<div className="main-footer bg-blue">
-							{data?.blocks &&
-								data.blocks.map((block, key) => {
-									if (block.menu === null) {
-										return null;
-									}
-									return (
-										<div key={key} className="footer-block">
-											{block.title && <p className="is-h3">{block.title}</p>}
-											{block.menu?.items && (
-												<Menu
-													items={block.menu.items}
-													classNames="menu-footer"
-												/>
-											)}
-
-											{block.social && (
-												<div className="menu-social">
-													{block.social.map((link, key) => {
-														return (
-															<a
-																key={key}
-																href={link.url}
-																target="_blank"
-																rel="noopener noreferrer"
-															>
-																<SvgIcon type={link.icon} />
-															</a>
-														);
-													})}
-												</div>
-											)}
-										</div>
-									);
-								})}
+						<div className="main-footer c f-h f-f-c gap-5">
 							{data?.siteCopyright && (
-								<div className="footer-copyright t-l-1">
-									{data.siteCopyright}
+								<div className="footer-copyright t-label-small">
+									&copy; {new Date().getFullYear()} {data.siteCopyright}{' '}
+									{data.title}
+								</div>
+							)}
+							{data?.social?.length > 0 && (
+								<div className="footer-social f-h gap-5">
+									{data.social.map((link) => {
+										return (
+											<Link
+												key={link._key}
+												href={link.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="social-link cr-light"
+											>
+												<SvgIcon type={link.icon} />
+											</Link>
+										);
+									})}
 								</div>
 							)}
 						</div>
@@ -85,7 +69,21 @@ const Footer = forwardRef(function Footer(props, ref) {
 
 			<style global jsx>{`
 				.main-footer {
-					padding: var(--s-4);
+					padding: var(--s-gutter) 0;
+				}
+
+				.footer-social {
+					.social-link {
+						width: 20px;
+						height: 20px;
+						transition: color 0.2s;
+
+						@media (hover: hover) {
+							&:hover {
+								color: var(--cr-black);
+							}
+						}
+					}
 				}
 			`}</style>
 		</>
