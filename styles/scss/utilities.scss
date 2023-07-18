@@ -4,6 +4,7 @@
 	U2 COLOR
 	U3 TYPOGRAPHY
 	U4 LAYOUTS
+	U5 COMPONENTS
 
 */
 
@@ -74,24 +75,21 @@
 /*	U1 SETTINGS	*/
 
 :root {
-	--cr-black: #37474f;
-	--cr-white: #ffffff;
+	--cr-black: #16161a;
+	--cr-white: #fffffe;
 	--cr-subdued: #e2e2e2;
 	--cr-primary: #009dae;
 	--cr-secondary: #546e7a;
 	--cr-light: #78909c;
 
-	--t-heading-1: 400 4rem/4.5rem 'Neue Haas Grotesk Display', Helvetica,
+	--t-heading-1: 200 max(6vw, 72px) / 1.1 'Neue Haas Grotesk Display', Helvetica,
 		sans-serif;
-	--t-heading-2: 400 2.25rem/3.25rem 'Neue Haas Grotesk Display', Helvetica,
+	--t-heading-2: 200 max(5vw, 64px) / 1.1 'Neue Haas Grotesk Display', Helvetica,
 		sans-serif;
-	--t-heading-3: 400 2rem/2.75rem 'Neue Haas Grotesk Display', Helvetica,
+	--t-heading-3: 200 max(3vw, 32px) / 1.1 'Neue Haas Grotesk Display', Helvetica,
 		sans-serif;
-	--t-body: 400 1.25rem/2.5rem 'Neue Haas Grotesk Display', Helvetica,
-		sans-serif;
-	--t-label: 600 1rem/1rem 'Neue Haas Grotesk Display', Helvetica, sans-serif;
-	--t-label-small: 400 0.75rem/1rem 'Neue Haas Grotesk Display', Helvetica,
-		sans-serif;
+	--t-body: 300 20px/1.5 'Neue Haas Grotesk Display', Helvetica, sans-serif;
+	--t-label: 300 16px/1 'Neue Haas Grotesk Display', Helvetica, sans-serif;
 
 	--w-1: 1200px;
 	--w-2: 1040px;
@@ -99,11 +97,19 @@
 	--w-4: 420px;
 	--w-5: 300px;
 
-	--s-gutter: 32px;
+	--s-gutter: 24px;
 	--s-gutter-lg: 40px;
 	--s-section: 120px;
 	--s-section-half: 60px;
 	--s-container-max: 1600px;
+
+	--e-inOut-Sine: cubic-bezier(0.37, 0, 0.63, 1);
+	--e-inOut-Quad: cubic-bezier(0.45, 0, 0.55, 1);
+	--e-inOut-Cubic: cubic-bezier(0.65, 0, 0.35, 1);
+	--e-inOut-Quart: cubic-bezier(0.76, 0, 0.24, 1);
+	--e-inOut-Quint: cubic-bezier(0.83, 0, 0.17, 1);
+	--e-inOut-Expo: cubic-bezier(0.87, 0, 0.13, 1);
+	--e-inOut-Circ: cubic-bezier(0.85, 0, 0.15, 1);
 }
 
 ::selection {
@@ -118,13 +124,12 @@
 
 @media screen and (max-width: 900px) {
 	:root {
-		--t-heading-2: 400 2rem/2.5rem 'Neue Haas Grotesk Display', Helvetica,
-			sans-serif;
-		--t-heading-3: 400 1.75rem/2.5rem 'Neue Haas Grotesk Display', Helvetica,
-			sans-serif;
-		--t-body: 400 1rem/2rem 'Neue Haas Grotesk Display', Helvetica, sans-serif;
-		--t-label: 600 0.75rem/1rem 'Neue Haas Grotesk Display', Helvetica,
-			sans-serif;
+		--t-heading-2: 200 max(5vw, 48px) / 1.1 'Neue Haas Grotesk Display',
+			Helvetica, sans-serif;
+		--t-heading-3: 200 max(3vw, 24px) / 1.1 'Neue Haas Grotesk Display',
+			Helvetica, sans-serif;
+		--t-body: 300 16px/1.5 'Neue Haas Grotesk Display', Helvetica, sans-serif;
+		--t-label: 400 12px/1 'Neue Haas Grotesk Display', Helvetica, sans-serif;
 
 		--s-gutter: 1.5rem;
 		--s-gutter-lg: 2rem;
@@ -194,6 +199,7 @@ html {
 
 body {
 	font: var(--t-body);
+	background-color: var(--cr-black);
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 
@@ -226,20 +232,6 @@ ul,
 	font: var(--t-label);
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
-}
-
-.t-label-small {
-	font: var(--t-label-small);
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-}
-
-.t-large {
-	font-size: 1.5rem;
-}
-
-.t-small {
-	font-size: 0.875rem;
 }
 
 .t-light {
@@ -510,3 +502,56 @@ blockquote {
 }
 
 /*	U4 LAYOUTS - END	*/
+
+/*	U5 COMPONENTS */
+.btn {
+	position: relative;
+	flex: none;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	font: var(--t-label);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	text-align: center;
+	white-space: nowrap;
+	background: transparent;
+	box-shadow: none;
+	outline: none;
+	user-select: none;
+	pointer-events: auto;
+	cursor: pointer;
+
+	color: var(--cr-white);
+
+	&--text {
+		@extend .btn;
+		gap: 12px;
+
+		&:after {
+			content: '';
+			width: 14px;
+			height: 14px;
+			mask: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTMgMTMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjU2IDUuNSAxLjA2IDAgMCAxLjA2bDQuOTcgNC45N0wwIDExbDEuMDYgMS4wNiA1LjUtNS41LjUzLS41My0uNTMtLjUzWm01LjUgMEw2LjU2IDAgNS41IDEuMDZsNC45NyA0Ljk3TDUuNSAxMWwxLjA2IDEuMDYgNS41LTUuNS41My0uNTMtLjUzLS41M1oiIGZpbGw9IiMwMDI1RkEiLz4KPC9zdmc+)
+				center/cover no-repeat;
+			background-color: currentColor;
+			transition: transform 0.4s var(--e-inOut-Cubic);
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				&:after {
+					transform: translate(8px, 0);
+				}
+			}
+		}
+	}
+}
+
+.btn[disabled],
+button[disabled] {
+	background-color: var(--cr-subdued);
+	pointer-events: none;
+}
+
+/*	U5 COMPONENTS - END	*/

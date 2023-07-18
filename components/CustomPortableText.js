@@ -47,35 +47,47 @@ const CustomPortableText = ({ blocks, classNames }) => {
 			<style global jsx>{`
 				.portable-text {
 					a {
-						text-decoration: underline;
-						transition: 0.4s;
+						display: inline-block;
+
+						&::before,
+						&::after {
+							content: '';
+							position: absolute;
+							bottom: 8px;
+							height: 1px;
+							background-color: var(--cr-white);
+							transition: width 0.4s var(--e-inOut-Cubic);
+						}
+
+						&::before {
+							right: 0;
+							width: 100%;
+						}
+
+						&::after {
+							left: 0;
+							width: 0;
+						}
 
 						@media (hover: hover) {
 							&:hover {
-								color: var(--cr-primary);
-								text-decoration-color: var(--cr-primary);
-							}
-						}
+								&::before {
+									width: 0;
+								}
 
-						.is-highlighted {
-							color: var(--cr-primary);
-							font-weight: 600;
-							text-decoration: underline;
-							text-decoration-color: var(--cr-primary);
-							opacity: 1;
-							transition: opacity 0.4s;
-
-							@media (hover: hover) {
-								&:hover {
-									opacity: 0.8;
+								&::after {
+									width: 100%;
+									transition-delay: 0.4s;
 								}
 							}
 						}
 					}
 
 					.is-highlighted {
-						color: var(--cr-primary);
-						opacity: 0.8;
+						display: inline-block;
+						padding: 4px 20px 0;
+						color: var(--cr-black);
+						background-color: var(--cr-white);
 					}
 				}
 			`}</style>

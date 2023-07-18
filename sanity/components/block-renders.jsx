@@ -40,19 +40,6 @@ export const Header3 = (props) => (
 	</h3>
 );
 
-export const Header4 = (props) => (
-	<h4
-		style={{
-			margin: '0',
-			fontSize: '1.25rem',
-			lineHeight: '1.25',
-			fontWeight: 400,
-		}}
-	>
-		{props.children}
-	</h4>
-);
-
 export const Button = ({ isButton, styles, children }) => {
 	if (!isButton) return children;
 
@@ -72,7 +59,9 @@ export const Highlight = (props) => (
 	<span
 		style={{
 			display: 'inline-block',
-			border: '1px dotted #009dae',
+			backgroundColor: '#fffffe',
+			color: '#000',
+			padding: '0 10px',
 		}}
 	>
 		{props.children}

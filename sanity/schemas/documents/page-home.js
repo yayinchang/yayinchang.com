@@ -22,37 +22,14 @@ export default {
 			},
 		},
 		{
-			title: 'Label',
-			name: 'label',
-			type: 'string',
-		},
-		{
 			title: 'Introduction',
 			name: 'intro',
 			type: 'portableTextSimple',
 		},
 		{
-			title: 'Recent Work',
-			name: 'recentWork',
-			type: 'object',
-			fields: [
-				{
-					title: 'Label',
-					name: 'label',
-					type: 'string',
-				},
-				{
-					title: 'Items',
-					name: 'items',
-					type: 'array',
-					of: [{ type: 'work' }],
-				},
-				{
-					title: 'CTA',
-					name: 'cta',
-					type: 'linkSet',
-				},
-			],
+			title: 'About Toggler Label',
+			name: 'aboutTogglerLabel',
+			type: 'string',
 		},
 		{
 			title: 'SEO / Share Settings',

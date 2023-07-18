@@ -22,6 +22,13 @@ const link = `
 	blank
 `;
 
+export const linkSet = `
+	label,
+	link {
+		${link}
+	},
+`;
+
 // Construct our "menu" GROQ
 const menu = `
   _key,
@@ -76,113 +83,23 @@ export const ptContent = `
   }
 `;
 
-export const callToAction = `
-	ctaLabel,
-	ctaLink {
-		${link}
+// Construct our "work" GROQ
+export const work = `
+  _id,
+	title,
+	slug,
+	tags[]{
+		_key,
+		title
 	},
-	ctaStyle
-`;
-
-// Construct our "blocks" GROQ
-export const blocks = `
-  _type == 'freeform' => {
-    _type,
-    _key,
-    content[]{
-      ${ptContent}
-    },
-    textAlign,
-    maxWidth
-  },
-  _type == 'accordions' => {
-    _type,
-    _key,
-    items[]{
-      "id": _key,
-      title,
-      content[]{
-        ${ptContent}
-      }
-    }
-  }
-`;
-
-// Construct our content "modules" GROQ
-export const modules = `
-  _type == 'grid' => {
-    _type,
-    _key,
-    size,
-    columns[]{
-      sizes[]{
-        breakpoint,
-        width,
-        justify,
-        align,
-        start
-      },
-      blocks[]{
-        ${blocks}
-      }
-    }
-  },
-  _type == 'hero' => {
-    _type,
-    _key,
-    content[]{
-      ${ptContent}
-    },
-    bgType,
-    photos{
-      ...,
-      mobilePhoto{
-        ${imageMeta}
-      },
-      desktopPhoto{
-        ${imageMeta}
-      }
-    },
-    video{
-      id,
-      title
-    }
-  },
-  _type == 'marquee' => {
-    _type,
-    _key,
-    items[]{
-      _type == 'simple' => {
-        _type,
-        text
-      },
-      _type == 'photo' => {
-        _type,
-        "photo": {
-          ${imageMeta}
-        }
-      }
-    },
-    speed,
-    reverse,
-    pausable
-  },
-  _type == 'photoSection' => {
-    _type,
-    _key,
-    photo{
-      ${imageMeta}
-    }
-  },
-  _type == 'freeform' => {
-    _type,
-    _key,
-    content[]{
-      ${ptContent}
-    },
-    textAlign,
-    maxWidth
-  }
+	logo {
+		image{
+			${imageMeta}
+		},
+		width,
+		height
+	},
+	'themeColor': color.hex,
 `;
 
 // Construct our "site" GROQ
