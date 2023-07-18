@@ -5,51 +5,51 @@ class MyDocument extends Document {
 		return (
 			<Html>
 				<Head>
-					{/* <link
+					<link
 						rel="preload"
-						href="/fonts/font-noto-sans-tc-regular.woff2"
+						href="/fonts/font-neue-haas-display-thin.woff2"
 						as="font"
 						crossOrigin=""
 					/>
 					<link
 						rel="preload"
-						href="/fonts/font-noto-sans-tc-bold.woff2"
-						as="font"
-						crossOrigin=""
-					/> */}
-					<link
-						rel="preload"
-						href="/fonts/font-poppins-light.woff2"
+						href="/fonts/font-neue-haas-display-thin-italic.woff2"
 						as="font"
 						crossOrigin=""
 					/>
 					<link
 						rel="preload"
-						href="/fonts/font-poppins-light-italic.woff2"
+						href="/fonts/font-neue-haas-display-light.woff2"
 						as="font"
 						crossOrigin=""
 					/>
 					<link
 						rel="preload"
-						href="/fonts/font-poppins-regular.woff2"
+						href="/fonts/font-neue-haas-display-light-italic.woff2"
 						as="font"
 						crossOrigin=""
 					/>
 					<link
 						rel="preload"
-						href="/fonts/font-poppins-regular-italic.woff2"
+						href="/fonts/font-neue-haas-display-roman.woff2"
 						as="font"
 						crossOrigin=""
 					/>
 					<link
 						rel="preload"
-						href="/fonts/font-poppins-semibold.woff2"
+						href="/fonts/font-neue-haas-display-roman-italic.woff2"
 						as="font"
 						crossOrigin=""
 					/>
 					<link
 						rel="preload"
-						href="/fonts/font-poppins-semibold-italic.woff2"
+						href="/fonts/font-neue-haas-display-medium.woff2"
+						as="font"
+						crossOrigin=""
+					/>
+					<link
+						rel="preload"
+						href="/fonts/font-neue-haas-display-medium-italic.woff2"
 						as="font"
 						crossOrigin=""
 					/>

@@ -7,66 +7,66 @@
 
 */
 
-// @font-face {
-// 	font-family: 'Noto Sans TC';
-// 	src: url('/fonts/font-noto-sans-tc-regular.woff2') format('woff2');
-// 	font-weight: 400;
-// 	font-style: normal;
-// 	font-display: block;
-// }
-
-// @font-face {
-// 	font-family: 'Noto Sans TC';
-// 	src: url('/fonts/font-noto-sans-tc-bold.woff2') format('woff2');
-// 	font-weight: 700;
-// 	font-style: normal;
-// 	font-display: block;
-// }
+@font-face {
+	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-thin.woff2') format('woff2');
+	font-weight: 200;
+	font-style: normal;
+	font-display: block;
+}
 
 @font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/font-poppins-light.woff2') format('woff2');
+	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-thin-italic.woff2') format('woff2');
+	font-weight: 200;
+	font-style: italic;
+	font-display: block;
+}
+
+@font-face {
+	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-light.woff2') format('woff2');
 	font-weight: 300;
 	font-style: normal;
 	font-display: block;
 }
 
 @font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/font-poppins-light-italic.woff2') format('woff2');
+	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-light-italic.woff2') format('woff2');
 	font-weight: 300;
 	font-style: italic;
 	font-display: block;
 }
 
 @font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/font-poppins-regular.woff2') format('woff2');
+	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-roman.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: block;
 }
 
 @font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/font-poppins-regular-italic.woff2') format('woff2');
+	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-roman-italic.woff2') format('woff2');
 	font-weight: 400;
 	font-style: italic;
 	font-display: block;
 }
 
 @font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/font-poppins-semibold.woff2') format('woff2');
-	font-weight: 600;
+	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-medium.woff2') format('woff2');
+	font-weight: 500;
 	font-style: normal;
 	font-display: block;
 }
 
 @font-face {
-	font-family: 'Poppins';
-	src: url('/fonts/font-poppins-semibold-italic.woff2') format('woff2');
-	font-weight: 600;
+	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-medium-italic.woff2') format('woff2');
+	font-weight: 500;
 	font-style: italic;
 	font-display: block;
 }
@@ -81,12 +81,17 @@
 	--cr-secondary: #546e7a;
 	--cr-light: #78909c;
 
-	--t-heading-1: 400 4rem/4.5rem 'Poppins', Helvetica, sans-serif;
-	--t-heading-2: 400 2.25rem/3.25rem 'Poppins', Helvetica, sans-serif;
-	--t-heading-3: 400 2rem/2.75rem 'Poppins', Helvetica, sans-serif;
-	--t-body: 400 1.25rem/2.5rem 'Poppins', Helvetica, sans-serif;
-	--t-label: 600 1rem/1rem 'Poppins', Helvetica, sans-serif;
-	--t-label-small: 400 0.75rem/1rem 'Poppins', Helvetica, sans-serif;
+	--t-heading-1: 400 4rem/4.5rem 'Neue Haas Grotesk Display', Helvetica,
+		sans-serif;
+	--t-heading-2: 400 2.25rem/3.25rem 'Neue Haas Grotesk Display', Helvetica,
+		sans-serif;
+	--t-heading-3: 400 2rem/2.75rem 'Neue Haas Grotesk Display', Helvetica,
+		sans-serif;
+	--t-body: 400 1.25rem/2.5rem 'Neue Haas Grotesk Display', Helvetica,
+		sans-serif;
+	--t-label: 600 1rem/1rem 'Neue Haas Grotesk Display', Helvetica, sans-serif;
+	--t-label-small: 400 0.75rem/1rem 'Neue Haas Grotesk Display', Helvetica,
+		sans-serif;
 
 	--w-1: 1200px;
 	--w-2: 1040px;
@@ -113,10 +118,13 @@
 
 @media screen and (max-width: 900px) {
 	:root {
-		--t-heading-2: 400 2rem/2.5rem 'Poppins', Helvetica, sans-serif;
-		--t-heading-3: 400 1.75rem/2.5rem 'Poppins', Helvetica, sans-serif;
-		--t-body: 400 1rem/2rem 'Poppins', Helvetica, sans-serif;
-		--t-label: 600 0.75rem/1rem 'Poppins', Helvetica, sans-serif;
+		--t-heading-2: 400 2rem/2.5rem 'Neue Haas Grotesk Display', Helvetica,
+			sans-serif;
+		--t-heading-3: 400 1.75rem/2.5rem 'Neue Haas Grotesk Display', Helvetica,
+			sans-serif;
+		--t-body: 400 1rem/2rem 'Neue Haas Grotesk Display', Helvetica, sans-serif;
+		--t-label: 600 0.75rem/1rem 'Neue Haas Grotesk Display', Helvetica,
+			sans-serif;
 
 		--s-gutter: 1.5rem;
 		--s-gutter-lg: 2rem;
