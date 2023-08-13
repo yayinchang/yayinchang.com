@@ -28,6 +28,11 @@ export default {
 			description: 'The name of your site, usually your company/brand name',
 		},
 		{
+			title: 'Email',
+			name: 'email',
+			type: 'string',
+		},
+		{
 			title: 'Live Site URL',
 			description: 'The root domain or subdomain of your website',
 			name: 'siteURL',

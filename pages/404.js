@@ -1,7 +1,6 @@
 import React from 'react';
 import Error from 'next/error';
 import { getStaticPage, queries } from '@/data';
-import { Module } from '@/components/modules';
 
 const NotFoundPage = ({ data }) => {
 	const { page } = data || {};

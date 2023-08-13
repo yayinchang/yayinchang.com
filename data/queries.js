@@ -106,6 +106,7 @@ export const work = `
 export const site = `
   "site": {
     "title": *[_type == "generalSettings"][0].siteTitle,
+		"email": *[_type == "generalSettings"][0].email,
     "rootDomain": *[_type == "generalSettings"][0].siteURL,
     "header": *[_type == "headerSettings"][0]{
       menu->{
@@ -114,6 +115,7 @@ export const site = `
     },
    	"footer": *[_type == "footerSettings"][0]{
 			"title": *[_type == "generalSettings"][0].siteTitle,
+			"email": *[_type == "generalSettings"][0].email,
 			siteCopyright,
 			social[]{
 				_key,

@@ -51,22 +51,6 @@ const SvgIcons = ({ type }) => {
 					</g>
 				</svg>
 			);
-		case 'arrow-right-long':
-			return (
-				<svg
-					className="svg-arrow-right-long"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 377.543 41.214"
-				>
-					<g fill="none" stroke="currentColor" strokeMiterlimit="10">
-						<path d="M0 20.607h375.322" />
-						<path
-							d="M356.309 1.516 375.4 20.607l-19.091 19.091"
-							strokeLinecap="round"
-						/>
-					</g>
-				</svg>
-			);
 		case 'chevron-up':
 			return (
 				<svg
@@ -93,6 +77,40 @@ const SvgIcons = ({ type }) => {
 						points="51.5 85.657 8.672 42.828 14.328 37.172 51.5 74.343 88.672 37.172 94.328 42.828 51.5 85.657"
 						fill="currentColor"
 					/>
+				</svg>
+			);
+		case 'chevron-left':
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className="chevron-left"
+				>
+					<polyline points="15 18 9 12 15 6"></polyline>
+				</svg>
+			);
+		case 'chevron-right':
+			return (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					className="chevron-right"
+				>
+					<polyline points="9 18 15 12 9 6"></polyline>
 				</svg>
 			);
 		case 'menu':
@@ -132,38 +150,13 @@ const SvgIcons = ({ type }) => {
 					<line x1="6" y1="6" x2="18" y2="18"></line>
 				</svg>
 			);
-		case 'chevron-left':
+		case 'envelope':
 			return (
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					strokeWidth="2"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					className="chevron-left"
-				>
-					<polyline points="15 18 9 12 15 6"></polyline>
-				</svg>
-			);
-		case 'chevron-right':
-			return (
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					strokeWidth="2"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					className="chevron-right"
-				>
-					<polyline points="9 18 15 12 9 6"></polyline>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<path
+						d="M2.25 3A2.25 2.25 0 0 0 .9 7.05l10.2 7.65a1.505 1.505 0 0 0 1.8 0l10.2-7.65A2.251 2.251 0 0 0 21.75 3H2.25ZM0 8.25V18c0 1.655 1.345 3 3 3h18c1.655 0 3-1.345 3-3V8.25L13.8 15.9a2.995 2.995 0 0 1-3.6 0L0 8.25Z"
+						fill="currentColor"
+					/>
 				</svg>
 			);
 		case 'facebook':

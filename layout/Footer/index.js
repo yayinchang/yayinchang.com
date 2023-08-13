@@ -38,15 +38,24 @@ const Footer = forwardRef(function Footer(props, ref) {
 						variants={domTransitionAnim}
 						className="global-footer"
 					>
-						<div className="main-footer c f-h f-f-c gap-5">
+						<div className="main-footer f-h f-f-c gap-6">
 							{data?.siteCopyright && (
-								<div className="footer-copyright t-label-small">
+								<div className="footer-copyright t-label-light cr-gray">
 									&copy; {new Date().getFullYear()} {data.siteCopyright}{' '}
 									{data.title}
 								</div>
 							)}
 							{data?.social?.length > 0 && (
-								<div className="footer-social f-h gap-5">
+								<div className="footer-social f-h gap-6">
+									<Link
+										href={`mailto:${data.email}`}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="social-link cr-gray"
+										aria-label={`Contact ${data.title} by e-mail`}
+									>
+										<SvgIcon type="envelope" />
+									</Link>
 									{data.social.map((link) => {
 										return (
 											<Link
@@ -54,7 +63,8 @@ const Footer = forwardRef(function Footer(props, ref) {
 												href={link.url}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="social-link cr-light"
+												className="social-link cr-gray"
+												aria-label={`Visit ${data.title}'s ${link.icon}`}
 											>
 												<SvgIcon type={link.icon} />
 											</Link>
@@ -69,7 +79,7 @@ const Footer = forwardRef(function Footer(props, ref) {
 
 			<style global jsx>{`
 				.main-footer {
-					padding: var(--s-gutter) 0;
+					padding: var(--s-gutter-lg);
 				}
 
 				.footer-social {
@@ -80,7 +90,7 @@ const Footer = forwardRef(function Footer(props, ref) {
 
 						@media (hover: hover) {
 							&:hover {
-								color: var(--cr-black);
+								color: var(--cr-white);
 							}
 						}
 					}

@@ -6,21 +6,18 @@ const ScrollDown = () => {
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
-			gsap.utils.toArray('.js-scroll-down svg').forEach((item, index) => {
-				gsap.to(item, {
-					keyframes: {
-						'0%': { opacity: 0 },
-						'50%': { opacity: 1 },
-						'100%': { opacity: 0 },
-					},
-					opacity: 1,
-					y: `+=16 + ${index / 2}`,
-					scale: '+=0.4',
-					duration: 2.6,
-					delay: 0.2 + index * 0.15,
-					repeat: -1,
-					ease: 'none',
-				});
+			gsap.to('svg', {
+				keyframes: {
+					'0%': { opacity: 0 },
+					'50%': { opacity: 1 },
+					'100%': { opacity: 0 },
+				},
+				y: (i) => `+=16 + ${i / 2}`,
+				scale: '+=0.4',
+				duration: 2.6,
+				delay: (i) => 0.2 + i * 0.15,
+				repeat: -1,
+				ease: 'none',
 			});
 		}, ref);
 
@@ -29,7 +26,7 @@ const ScrollDown = () => {
 
 	return (
 		<>
-			<div className="scroll-down cr-white js-scroll-down" ref={ref}>
+			<div className="scroll-down cr-gray js-scroll-down" ref={ref}>
 				<svg
 					width="18"
 					height="10"
@@ -85,6 +82,7 @@ const ScrollDown = () => {
 						position: absolute;
 						top: 50%;
 						left: 50%;
+						opacity: 0;
 
 						&:first-child {
 							transform: translate(-50%, calc(-50% - 20px)) scale(0.4);
