@@ -36,9 +36,6 @@ export async function getCustomPages(pageData, preview) {
 export async function getStaticPage(pageId, preview) {
 	const pageQueryData = `*[_type == "page" && _id == ${pageId}] | order(_updatedAt desc)[0]{
 			"pageMainData": {
-				modules[]{
-					${queries.modules}
-				},
 			},
 			title,
 			seo
@@ -65,9 +62,6 @@ export async function getPage(slug, preview) {
 				slugs
 			)}] | order(_updatedAt desc)[0]{
        	"pageMainData": {
-					modules[]{
-						${queries.modules}
-					}
 				},
         title,
         seo,

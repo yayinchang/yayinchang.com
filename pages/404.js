@@ -15,15 +15,7 @@ const NotFoundPage = ({ data }) => {
 		);
 	}
 
-	return (
-		<div className="page-error page-content">
-			<div className="c">
-				{pageMainData.modules?.map((module, key) => (
-					<Module key={key} index={key} module={module} />
-				))}
-			</div>
-		</div>
-	);
+	return <div className="page-error page-content"></div>;
 };
 
 export async function getStaticProps({ preview, previewData }) {

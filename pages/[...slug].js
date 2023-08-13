@@ -2,7 +2,6 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { getPage, getAllDocSlugs } from '@/data';
 import NotFoundPage from '@/pages/404';
-import { Module } from '@/components/modules';
 import cx from 'classnames';
 
 const Page = ({ data }) => {
@@ -22,11 +21,7 @@ const Page = ({ data }) => {
 						`page-${page.title.toLowerCase()}`
 					)}
 				>
-					<div className="c">
-						{page.pageMainData.modules?.map((module, key) => (
-							<Module key={key} index={key} module={module} />
-						))}
-					</div>
+					<div className="c"></div>
 				</div>
 			)}
 			<style jsx>{``}</style>

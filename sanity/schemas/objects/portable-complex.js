@@ -2,7 +2,6 @@ import {
 	Header1,
 	Header2,
 	Header3,
-	Header4,
 	Button,
 } from '@/sanity/components/block-renders';
 
@@ -42,16 +41,6 @@ export default {
 					title: 'H3 (mimic)',
 					value: 'h3mock',
 					component: Header3,
-				},
-				{
-					title: 'H4',
-					value: 'h4',
-					component: Header4,
-				},
-				{
-					title: 'H4 (mimic)',
-					value: 'h4mock',
-					component: Header4,
 				},
 				{ title: 'Quote', value: 'blockquote' },
 			],
