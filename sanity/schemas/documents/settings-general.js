@@ -33,28 +33,16 @@ export default {
 			type: 'string',
 		},
 		{
+			title: 'Social Links',
+			name: 'social',
+			type: 'array',
+			of: [{ type: 'socialLink' }],
+		},
+		{
 			title: 'Live Site URL',
 			description: 'The root domain or subdomain of your website',
 			name: 'siteURL',
 			type: 'url',
-		},
-		{
-			title: 'Google Tag Manager (GA)',
-			description: 'To enable GA enter your Container ID',
-			name: 'gaID',
-			type: 'string',
-		},
-		{
-			title: 'Google Tag Manager (GTM)',
-			description: 'To enable GTM enter your Container ID',
-			name: 'gtmID',
-			type: 'string',
-		},
-		{
-			title: 'Klaviyo Site ID (Public API Key)',
-			description: 'For product waitlist and newsletter forms',
-			name: 'klaviyoAccountID',
-			type: 'string',
 		},
 	],
 	preview: {

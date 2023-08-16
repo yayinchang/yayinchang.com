@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import cx from 'classnames';
 import { gsap } from 'gsap';
 
-const ScrollDown = () => {
+const ScrollArrows = ({ classNames }) => {
 	const ref = useRef();
 
 	useEffect(() => {
@@ -13,7 +14,6 @@ const ScrollDown = () => {
 					'100%': { opacity: 0 },
 				},
 				y: (i) => `+=16 + ${i / 2}`,
-				scale: '+=0.4',
 				duration: 2.6,
 				delay: (i) => 0.2 + i * 0.15,
 				repeat: -1,
@@ -26,7 +26,10 @@ const ScrollDown = () => {
 
 	return (
 		<>
-			<div className="scroll-down cr-gray js-scroll-down" ref={ref}>
+			<div
+				className={cx('scroll-arrows cr-gray js-scroll-arrows', classNames)}
+				ref={ref}
+			>
 				<svg
 					width="18"
 					height="10"
@@ -71,7 +74,7 @@ const ScrollDown = () => {
 				</svg>
 			</div>
 			<style global jsx>{`
-				.scroll-down {
+				.scroll-arrows {
 					position: absolute;
 					bottom: var(--s-gutter);
 					right: var(--s-gutter);
@@ -85,15 +88,15 @@ const ScrollDown = () => {
 						opacity: 0;
 
 						&:first-child {
-							transform: translate(-50%, calc(-50% - 20px)) scale(0.4);
+							transform: translate(-50%, calc(-50% - 20px));
 						}
 
 						&:nth-child(2) {
-							transform: translate(-50%, calc(-50% - 10px)) scale(0.6);
+							transform: translate(-50%, calc(-50% - 10px));
 						}
 
 						&:last-child {
-							transform: translate(-50%, -50%) scale(0.8);
+							transform: translate(-50%, -50%);
 						}
 					}
 				}
@@ -102,4 +105,4 @@ const ScrollDown = () => {
 	);
 };
 
-export default ScrollDown;
+export default ScrollArrows;

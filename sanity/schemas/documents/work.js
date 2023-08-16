@@ -83,7 +83,7 @@ export default {
 		},
 		{
 			title: 'Tags',
-			name: 'tag',
+			name: 'tags',
 			type: 'array',
 			of: [{ type: 'tag' }],
 		},

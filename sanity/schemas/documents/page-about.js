@@ -19,36 +19,31 @@ const Details = {
 			validation: (Rule) => Rule.required(),
 		},
 		{
-			title: 'Title Link',
-			name: 'titleLink',
+			title: 'Link',
+			name: 'link',
 			type: 'url',
 		},
 		{
 			title: 'Subtitle',
 			name: 'subtitle',
-			type: 'text',
-			rows: 3,
-			description: '(required)',
-			validation: (Rule) => Rule.required(),
+			type: 'string',
 		},
 		{
 			title: 'Date',
 			name: 'date',
 			type: 'string',
-			description: '(required)',
-			validation: (Rule) => Rule.required(),
 		},
 	],
 	preview: {
 		select: {
 			title: 'title',
 			subtitle: 'subtitle',
-			data: 'date',
+			date: 'date',
 		},
 		prepare({ title, subtitle, date }) {
 			return {
 				title: title,
-				subtitle: `${subtitle} | ${date}`,
+				subtitle: `${subtitle ? subtitle : ''}${date ? `| ${date}` : ''}`,
 				media: BlockContentIcon,
 			};
 		},
@@ -139,24 +134,24 @@ export default {
 			},
 		},
 		{
+			title: 'Profile Image',
+			name: 'profileImage',
+			type: 'image',
+		},
+		{
 			title: 'Heading',
 			name: 'heading',
 			type: 'string',
 		},
 		{
-			title: 'Subheading',
-			name: 'subheading',
-			type: 'portableTextSimple',
-		},
-		{
 			title: 'Summary',
 			name: 'summary',
 			type: 'text',
-			rows: 5,
+			rows: 7,
 		},
 		{
-			title: 'Brief',
-			name: 'brief',
+			title: 'Intro',
+			name: 'intro',
 			type: 'array',
 			of: [ListObject],
 		},
@@ -165,11 +160,6 @@ export default {
 			name: 'motto',
 			type: 'text',
 			rows: 5,
-		},
-		{
-			title: 'SEO / Share Settings',
-			name: 'seo',
-			type: 'seo',
 		},
 	],
 	preview: {

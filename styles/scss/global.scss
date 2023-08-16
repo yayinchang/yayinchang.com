@@ -3,6 +3,16 @@ html {
 	scroll-padding: var(--s-header);
 }
 
+html.is-about-triggered {
+	main {
+		z-index: 2;
+	}
+
+	.about {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
 .section {
 	padding: var(--s-section) 0;
 }

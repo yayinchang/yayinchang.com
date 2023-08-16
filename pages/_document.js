@@ -7,6 +7,18 @@ class MyDocument extends Document {
 				<Head>
 					<link
 						rel="preload"
+						href="/fonts/font-neue-haas-display-xxthin.woff2"
+						as="font"
+						crossOrigin=""
+					/>
+					<link
+						rel="preload"
+						href="/fonts/font-neue-haas-display-xxthin-italic.woff2"
+						as="font"
+						crossOrigin=""
+					/>
+					<link
+						rel="preload"
 						href="/fonts/font-neue-haas-display-thin.woff2"
 						as="font"
 						crossOrigin=""

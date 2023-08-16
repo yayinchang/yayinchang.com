@@ -38,7 +38,7 @@ const Footer = forwardRef(function Footer(props, ref) {
 						variants={domTransitionAnim}
 						className="global-footer"
 					>
-						<div className="main-footer f-h f-f-c gap-6">
+						<div className="main-footer f-h f-a-c gap-6">
 							{data?.siteCopyright && (
 								<div className="footer-copyright t-label-light cr-gray">
 									&copy; {new Date().getFullYear()} {data.siteCopyright}{' '}

@@ -107,6 +107,11 @@ export const site = `
   "site": {
     "title": *[_type == "generalSettings"][0].siteTitle,
 		"email": *[_type == "generalSettings"][0].email,
+		"social": *[_type == "generalSettings"][0].social[]{
+			_key,
+			icon,
+			url
+		},
     "rootDomain": *[_type == "generalSettings"][0].siteURL,
     "header": *[_type == "headerSettings"][0]{
       menu->{

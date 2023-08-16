@@ -10,6 +10,22 @@
 
 @font-face {
 	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-xxthin.woff2') format('woff2');
+	font-weight: 100;
+	font-style: normal;
+	font-display: block;
+}
+
+@font-face {
+	font-family: 'Neue Haas Grotesk Display';
+	src: url('/fonts/font-neue-haas-display-xxthin-italic.woff2') format('woff2');
+	font-weight: 100;
+	font-style: italic;
+	font-display: block;
+}
+
+@font-face {
+	font-family: 'Neue Haas Grotesk Display';
 	src: url('/fonts/font-neue-haas-display-thin.woff2') format('woff2');
 	font-weight: 200;
 	font-style: normal;
@@ -84,22 +100,23 @@
 		sans-serif;
 	--t-heading-2: 200 max(5vw, 64px) / 1.1 'Neue Haas Grotesk Display', Helvetica,
 		sans-serif;
-	--t-heading-3: 200 max(3vw, 32px) / 1.1 'Neue Haas Grotesk Display', Helvetica,
+	--t-heading-3: 200 min(3vw, 32px) / 1.1 'Neue Haas Grotesk Display', Helvetica,
 		sans-serif;
 	--t-body: 300 20px/1.5 'Neue Haas Grotesk Display', Helvetica, sans-serif;
 	--t-label: 300 16px/1 'Neue Haas Grotesk Display', Helvetica, sans-serif;
 	--t-label-light: 200 16px/1 'Neue Haas Grotesk Display', Helvetica, sans-serif;
 
 	--w-1: 1200px;
-	--w-2: 1040px;
+	--w-2: 800px;
 	--w-3: 600px;
 	--w-4: 420px;
 	--w-5: 300px;
 
+	--s-gutter-sm: 16px;
 	--s-gutter: 24px;
-	--s-gutter-lg: 40px;
-	--s-section: 120px;
-	--s-section-half: 60px;
+	--s-gutter-md: 32px;
+	--s-gutter-lg: 64px;
+	--s-gutter-xl: 80px;
 	--s-container-max: 1600px;
 
 	--e-inOut-Sine: cubic-bezier(0.37, 0, 0.63, 1);
@@ -131,11 +148,6 @@
 		--t-label: 400 12px/1 'Neue Haas Grotesk Display', Helvetica, sans-serif;
 		--t-label-light: 200 12px/1 'Neue Haas Grotesk Display', Helvetica,
 			sans-serif;
-
-		--s-gutter: 1.5rem;
-		--s-gutter-lg: 2rem;
-		--s-section: 3rem;
-		--s-section-half: 1.5rem;
 	}
 }
 
@@ -230,7 +242,7 @@ ul,
 }
 
 .t-light {
-	font-weight: 300;
+	font-weight: 100;
 }
 
 .t-bold {
@@ -241,21 +253,8 @@ ul,
 	font-style: italic;
 }
 
-.t-link,
-.t-link-dotted {
-	text-decoration: underline;
-	transition: opacity 0.4s ease;
-
-	@media (hover: hover) {
-		&:hover {
-			opacity: 0.8;
-		}
-	}
-}
-
-.t-link-dotted {
-	text-decoration: none;
-	border-bottom: 1px dotted currentColor;
+.t-wrap {
+	white-space: pre-line;
 }
 
 blockquote {
@@ -285,6 +284,7 @@ blockquote {
 	}
 
 	main {
+		position: relative;
 		flex: 1;
 	}
 }
@@ -398,8 +398,20 @@ blockquote {
 	grid-template-columns: repeat(6, 1fr);
 }
 
+.gap-gutter-sm {
+	gap: var(--s-gutter-sm);
+}
 .gap-gutter {
 	gap: var(--s-gutter);
+}
+.gap-gutter-md {
+	gap: var(--s-gutter-md);
+}
+.gap-gutter-lg {
+	gap: var(--s-gutter-lg);
+}
+.gap-gutter-xl {
+	gap: var(--s-gutter-xl);
 }
 
 .gap-1 {

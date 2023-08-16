@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { getCustomPages, queries } from '@/data';
 import { useInView } from 'react-intersection-observer';
 import cx from 'classnames';
 import BrandTitle from '@/components/BrandTitle';
 import ScrollArrows from '@/components/ScrollArrows';
 import CustomPortableText from '@/components/CustomPortableText';
+import { About } from '@/components/About';
 import theme from '@/styles/theme';
 
-const Hero = ({ data = {} }) => {
+const Hero = ({ data = {}, onClickEvent = null }) => {
 	const { page, site } = data;
 	const { intro, aboutTogglerLabel } = page;
+
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0,
@@ -32,8 +34,9 @@ const Hero = ({ data = {} }) => {
 						{intro && <CustomPortableText blocks={intro} />}
 						{aboutTogglerLabel && (
 							<button
-								className="btn btn--text js-about-toggler"
+								className="btn btn--text"
 								aria-label={`Learn more about ${site.title}`}
+								onClick={onClickEvent}
 							>
 								{aboutTogglerLabel}
 							</button>
@@ -45,7 +48,7 @@ const Hero = ({ data = {} }) => {
 			<style jsx>{`
 				.homepage-hero {
 					position: relative;
-					padding: var(--s-gutter-lg);
+					padding: var(--s-gutter-md);
 					min-height: var(--s-vp-height);
 
 					&-title {
@@ -62,9 +65,38 @@ const Hero = ({ data = {} }) => {
 };
 
 function IndexPage({ data }) {
+	const [isAboutTriggered, setIsAboutTriggered] = useState(false);
+
+	const onHandleClick = () => {
+		setIsAboutTriggered(!isAboutTriggered);
+	};
+
+	useEffect(() => {
+		isAboutTriggered
+			? document.documentElement.classList.add('is-about-triggered')
+			: document.documentElement.classList.remove('is-about-triggered');
+	}, [isAboutTriggered]);
+
+	useEffect(() => {
+		const handleKeydown = (e) => {
+			if (e.key == 'Escape') setIsAboutTriggered(false);
+		};
+
+		document.addEventListener('keydown', handleKeydown);
+
+		return () => {
+			document.removeEventListener('keydown', handleKeydown);
+		};
+	}, []);
+
 	return (
 		<div className="homepage">
-			<Hero data={data} />
+			<Hero data={data} onClickEvent={onHandleClick} />
+			<About
+				data={data}
+				isActive={isAboutTriggered}
+				onClickEvent={onHandleClick}
+			/>
 		</div>
 	);
 }
@@ -78,7 +110,23 @@ export async function getStaticProps({ preview = {}, previewData }) {
 				intro[]{
 					${queries.ptContent}
 				},
-				aboutTogglerLabel
+				aboutTogglerLabel,
+				"about": *[_type == "about"][0] {
+					profileImage{
+						${queries.imageMeta}
+					},
+					heading,
+					summary,
+					intro[]{
+						title,
+						items[]{
+							title,
+							link,
+							subtitle,
+							date
+						}
+					}
+				}
 			}`,
 		{
 			active: preview,

@@ -7,7 +7,7 @@ export const worksMenu = (S, context) => {
 		.icon(CaseIcon)
 		.child(
 			S.list()
-				.title('Pages')
+				.title('Works')
 				.items([
 					orderableDocumentListDeskItem({
 						title: 'Work',

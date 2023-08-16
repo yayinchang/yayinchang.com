@@ -63,11 +63,10 @@
 
 [data-animate='up'] > * {
 	transform: translate3d(0, 45px, 0);
-	-webkit-transform: translate3d(0, 45px, 0);
 }
 
 [data-animate='up'].is-animated > * {
-	animation: fadeInUp 0.8s ease-out both;
+	animation: fadeInUp 0.8s ease-out forwards;
 }
 
 [data-animate].is-animated > *:nth-child(2),
