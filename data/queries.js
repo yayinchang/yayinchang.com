@@ -122,7 +122,7 @@ export const site = `
 			"title": *[_type == "generalSettings"][0].siteTitle,
 			"email": *[_type == "generalSettings"][0].email,
 			siteCopyright,
-			social[]{
+			"social": *[_type == "generalSettings"][0].social[]{
 				_key,
 				icon,
 				url

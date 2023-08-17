@@ -79,7 +79,7 @@ const Footer = forwardRef(function Footer(props, ref) {
 
 			<style global jsx>{`
 				.main-footer {
-					padding: var(--s-gutter-lg);
+					padding: var(--s-gutter-md);
 				}
 
 				.footer-social {

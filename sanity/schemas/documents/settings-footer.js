@@ -8,12 +8,6 @@ export default {
 			name: 'siteCopyright',
 			type: 'string',
 		},
-		{
-			title: 'Social Links',
-			name: 'social',
-			type: 'array',
-			of: [{ type: 'socialLink' }],
-		},
 	],
 	preview: {
 		prepare() {
