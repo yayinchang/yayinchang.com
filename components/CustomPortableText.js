@@ -1,4 +1,5 @@
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
 import cx from 'classnames';
 import CustomLink from '@/components/CustomLink';
 import { PortableText } from '@portabletext/react';
@@ -39,9 +40,19 @@ const myPortableTextComponents = {
 const CustomPortableText = ({ blocks, classNames }) => {
 	if (!blocks) return null;
 
+	const { ref, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0,
+	});
+
 	return (
 		<>
-			<div className={cx('portable-text', classNames)}>
+			<div
+				ref={ref}
+				className={cx('portable-text', classNames, {
+					'is-inview': inView,
+				})}
+			>
 				<PortableText value={blocks} components={myPortableTextComponents} />
 			</div>
 			<style global jsx>{`
@@ -84,10 +95,28 @@ const CustomPortableText = ({ blocks, classNames }) => {
 					}
 
 					.is-highlighted {
+						position: relative;
 						display: inline-block;
-						padding: 4px 20px 0;
+						padding: 2px 12px 0;
 						color: var(--cr-black);
-						background-color: var(--cr-white);
+
+						&::before {
+							content: '';
+							position: absolute;
+							width: 0;
+							height: 100%;
+							top: 0;
+							left: 0;
+							background-color: var(--cr-white);
+							transition: width 0.4s 0.2s var(--e-inOut-Expo);
+							z-index: -1;
+						}
+					}
+
+					&.is-inview {
+						.is-highlighted::before {
+							width: 100%;
+						}
 					}
 				}
 			`}</style>

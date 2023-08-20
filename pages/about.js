@@ -233,13 +233,6 @@ const About = ({ data = {} }) => {
 						);
 						pointer-events: none;
 						z-index: 2;
-
-						:global(.scroll-arrows) {
-							transition: opacity 0.4s;
-						}
-						:global(.scroll-arrows.is-inactive) {
-							opacity: 0;
-						}
 					}
 
 					&-blocks {

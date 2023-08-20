@@ -57,6 +57,10 @@ const Hero = ({ data = {} }) => {
 						letter-spacing: -0.1rem;
 						white-space: nowrap;
 					}
+
+					:global(.portable-text .is-highlighted::before) {
+						transition-delay: 0.6s;
+					}
 				}
 			`}</style>
 		</>

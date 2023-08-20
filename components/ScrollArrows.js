@@ -26,10 +26,7 @@ const ScrollArrows = ({ classNames }) => {
 
 	return (
 		<>
-			<div
-				className={cx('scroll-arrows cr-gray js-scroll-arrows', classNames)}
-				ref={ref}
-			>
+			<div className={cx('scroll-arrows cr-gray', classNames)} ref={ref}>
 				<svg
 					width="18"
 					height="10"
@@ -80,6 +77,7 @@ const ScrollArrows = ({ classNames }) => {
 					right: var(--s-gutter);
 					width: 32px;
 					height: 64px;
+					transition: opacity 0.4s;
 
 					svg {
 						position: absolute;
@@ -98,6 +96,10 @@ const ScrollArrows = ({ classNames }) => {
 						&:last-child {
 							transform: translate(-50%, -50%);
 						}
+					}
+
+					&.is-inactive {
+						opacity: 0;
 					}
 				}
 			`}</style>
