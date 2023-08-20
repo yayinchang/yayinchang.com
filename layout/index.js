@@ -32,10 +32,8 @@ const Layout = ({ siteData = {}, pageData = {}, schema, children }) => {
 					/>
 				</>
 			)}
-			{/* <Header data={siteData.header} /> */}
-			<Main footerRef={footerRef} siteData={siteData}>
-				{children}
-			</Main>
+			<Header data={siteData.header} />
+			<Main siteData={siteData}>{children}</Main>
 			<Footer ref={footerRef} data={siteData.footer} />
 		</div>
 	);

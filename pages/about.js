@@ -214,7 +214,7 @@ const About = ({ data = {} }) => {
 
 				.about {
 					position: fixed;
-					top: 0;
+					top: var(--s-gutter);
 					bottom: 0;
 					left: 0;
 					right: 0;

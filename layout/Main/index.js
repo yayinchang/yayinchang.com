@@ -30,7 +30,6 @@ export default function Main({ children, siteData = {} }) {
 			</LazyMotion>
 			<style global jsx>{`
 				main {
-					padding: 0.1px 0;
 					min-height: calc(var(--s-vp-height) - var(--s-footer));
 				}
 			`}</style>
