@@ -30,6 +30,16 @@
 	}
 }
 
+@keyframes slideIn {
+	0% {
+		transform: translate3d(100%, 0, 0);
+	}
+
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
 @keyframes shake {
 	10%,
 	90% {
@@ -58,7 +68,7 @@
 }
 
 [data-animate].is-animated > * {
-	animation: fadeIn 0.8s ease-out both;
+	animation: fadeIn 0.8s 0.1s ease-out both;
 }
 
 [data-animate='up'] > * {

@@ -161,6 +161,11 @@ export default {
 			type: 'text',
 			rows: 5,
 		},
+		{
+			title: 'SEO / Share Settings',
+			name: 'seo',
+			type: 'seo',
+		},
 	],
 	preview: {
 		prepare() {

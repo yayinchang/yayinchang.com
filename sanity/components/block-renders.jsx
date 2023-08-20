@@ -59,8 +59,8 @@ export const Highlight = (props) => (
 	<span
 		style={{
 			display: 'inline-block',
-			backgroundColor: '#fffffe',
-			color: '#000',
+			backgroundColor: '#000',
+			color: '#fffffe',
 			padding: '0 10px',
 		}}
 	>

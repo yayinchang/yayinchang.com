@@ -18,7 +18,7 @@ export default {
 			title: 'Internal Page',
 			name: 'page',
 			type: 'reference',
-			to: [{ type: 'homepage' }, { type: 'about' }, { type: 'workIndex' }],
+			to: [{ type: 'homepage' }, { type: 'about' }],
 			hidden: ({ parent, value }) => {
 				if (!value && parent?.url) {
 					return true;
@@ -32,19 +32,19 @@ export default {
 			type: 'boolean',
 			initialValue: false,
 		},
-		{
-			title: 'Style',
-			name: 'style',
-			type: 'string',
-			options: {
-				list: [
-					{ title: 'Default', value: '' },
-					// add other style here
-				],
-			},
-			initialValue: '',
-			hidden: ({ parent }) => !parent?.isButton,
-		},
+		// {
+		// 	title: 'Style',
+		// 	name: 'style',
+		// 	type: 'string',
+		// 	options: {
+		// 		list: [
+		// 			{ title: 'Default', value: '' },
+		// 			// add other style here
+		// 		],
+		// 	},
+		// 	initialValue: '',
+		// 	hidden: ({ parent }) => !parent?.isButton,
+		// },
 		{
 			title: 'Open in new tab',
 			name: 'blank',

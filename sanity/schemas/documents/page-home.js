@@ -27,9 +27,9 @@ export default {
 			type: 'portableTextSimple',
 		},
 		{
-			title: 'About Toggler Label',
-			name: 'aboutTogglerLabel',
-			type: 'string',
+			title: 'About CTA',
+			name: 'aboutCTA',
+			type: 'linkSet',
 		},
 		{
 			title: 'SEO / Share Settings',

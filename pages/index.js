@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { getCustomPages, queries } from '@/data';
 import { useInView } from 'react-intersection-observer';
 import cx from 'classnames';
 import BrandTitle from '@/components/BrandTitle';
 import ScrollArrows from '@/components/ScrollArrows';
+import CustomLink from '@/components/CustomLink';
 import CustomPortableText from '@/components/CustomPortableText';
-import { About } from '@/components/About';
 import theme from '@/styles/theme';
 
-const Hero = ({ data = {}, onClickEvent = null }) => {
+const Hero = ({ data = {} }) => {
 	const { page, site } = data;
-	const { intro, aboutTogglerLabel } = page;
+	const { intro, aboutCTA } = page;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -23,7 +23,7 @@ const Hero = ({ data = {}, onClickEvent = null }) => {
 				<h1 className="homepage-hero-title">
 					<BrandTitle>{site.title}</BrandTitle>
 				</h1>
-				{(intro || aboutTogglerLabel) && (
+				{(intro || aboutCTA) && (
 					<div
 						ref={ref}
 						className={cx('homepage-hero-intro f-v f-a-s gap-8', {
@@ -32,14 +32,13 @@ const Hero = ({ data = {}, onClickEvent = null }) => {
 						data-animate="up"
 					>
 						{intro && <CustomPortableText blocks={intro} />}
-						{aboutTogglerLabel && (
-							<button
-								className="btn btn--text"
+						{aboutCTA?.label && (aboutCTA?.link.url || aboutCTA?.link.page) && (
+							<CustomLink
+								link={aboutCTA.link}
 								aria-label={`Learn more about ${site.title}`}
-								onClick={onClickEvent}
 							>
-								{aboutTogglerLabel}
-							</button>
+								{aboutCTA.label}
+							</CustomLink>
 						)}
 					</div>
 				)}
@@ -52,7 +51,7 @@ const Hero = ({ data = {}, onClickEvent = null }) => {
 					min-height: var(--s-vp-height);
 
 					&-title {
-						font-size: 16vw;
+						font-size: 16.5vw;
 						font-weight: 300;
 						line-height: 1;
 						letter-spacing: -0.1rem;
@@ -65,38 +64,9 @@ const Hero = ({ data = {}, onClickEvent = null }) => {
 };
 
 function IndexPage({ data }) {
-	const [isAboutTriggered, setIsAboutTriggered] = useState(false);
-
-	const onHandleClick = () => {
-		setIsAboutTriggered(!isAboutTriggered);
-	};
-
-	useEffect(() => {
-		isAboutTriggered
-			? document.documentElement.classList.add('is-about-triggered')
-			: document.documentElement.classList.remove('is-about-triggered');
-	}, [isAboutTriggered]);
-
-	useEffect(() => {
-		const handleKeydown = (e) => {
-			if (e.key == 'Escape') setIsAboutTriggered(false);
-		};
-
-		document.addEventListener('keydown', handleKeydown);
-
-		return () => {
-			document.removeEventListener('keydown', handleKeydown);
-		};
-	}, []);
-
 	return (
 		<div className="homepage">
-			<Hero data={data} onClickEvent={onHandleClick} />
-			<About
-				data={data}
-				isActive={isAboutTriggered}
-				onClickEvent={onHandleClick}
-			/>
+			<Hero data={data} />
 		</div>
 	);
 }
@@ -110,7 +80,9 @@ export async function getStaticProps({ preview = {}, previewData }) {
 				intro[]{
 					${queries.ptContent}
 				},
-				aboutTogglerLabel,
+				aboutCTA{
+					${queries.linkSet}
+				},
 				"about": *[_type == "about"][0] {
 					profileImage{
 						${queries.imageMeta}

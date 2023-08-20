@@ -40,11 +40,11 @@ const CustomLink = ({ link, children, classNames, ...rest }) => {
 				target={link.blank ? '_blank' : null}
 				rel={link.blank ? 'noopener noreferrer' : null}
 				className={cx(link.styles?.style, classNames, {
-					btn: link.isButton,
+					'btn btn--text': link.isButton,
 				})}
 				{...rest}
 			>
-				{children || link.title}
+				{children || link.label}
 			</NextLink>
 		);
 	}
