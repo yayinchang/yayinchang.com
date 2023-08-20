@@ -5,7 +5,6 @@ import { imageBuilder } from '@/sanity/lib/image';
 const HeadSEO = ({ site = {}, page = {}, schema }) => {
 	const siteTitle = site.title;
 	const siteFavicon = site.seo?.favicon || '/favicon.png';
-	const siteFaviconLegacy = site.seo?.faviconLegacy || '/favicon.png';
 	const siteTouchIcon = site.seo?.touchIcon;
 
 	const templateTags = [
@@ -46,17 +45,23 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
 			<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			<meta name="format-detection" content="telephone=no" />
 
-			<link rel="icon" href={siteFaviconLegacy} sizes="any" />
-			<link preload="true" rel="icon" type="image/svg+xml" href={siteFavicon} />
-			<link preload="true" rel="mask-icon" href={siteFavicon} color="#000000" />
-			{siteTouchIcon && (
-				<link
-					rel="apple-touch-icon"
-					href={imageBuilder.image(siteTouchIcon).width(192).height(192).url()}
-				/>
-			)}
+			<link
+				href="/favicon-light.png"
+				rel="icon"
+				media="(prefers-color-scheme: light)"
+			/>
+			<link
+				href="/favicon-dark.png"
+				rel="icon"
+				media="(prefers-color-scheme: dark)"
+			/>
+			<link
+				rel="apple-touch-icon"
+				sizes="180x180"
+				href="/apple-touch-icon.png"
+			/>
+			<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
-			<link rel="preconnect" href="https://hull-demo.myshopify.com" />
 			<link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
 
 			<title>{metaTitle}</title>
