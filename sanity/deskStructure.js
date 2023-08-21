@@ -8,6 +8,7 @@ const hiddenDocTypes = (listItem) =>
 		'solidColor',
 		'menu',
 		'tag',
+		'workType',
 
 		'work',
 

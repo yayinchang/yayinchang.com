@@ -102,6 +102,9 @@
 		sans-serif;
 	--t-heading-3: 200 min(3vw, 32px) / 1.3 'Neue Haas Grotesk Display', Helvetica,
 		sans-serif;
+	--t-title: 700 56px / 1.2 'Neue Haas Grotesk Display', Helvetica, sans-serif;
+	--t-subtitle: 100 56px / 1.2 'Neue Haas Grotesk Display', Helvetica,
+		sans-serif;
 	--t-body: 300 20px/1.5 'Neue Haas Grotesk Display', Helvetica, sans-serif;
 	--t-label: 300 16px/1 'Neue Haas Grotesk Display', Helvetica, sans-serif;
 	--t-label-light: 200 16px/1 'Neue Haas Grotesk Display', Helvetica, sans-serif;
@@ -231,6 +234,14 @@ ul,
 	letter-spacing: 0.05em;
 }
 
+.t-title {
+	font: var(--t-title);
+}
+
+.t-subtitle {
+	font: var(--t-subtitle);
+}
+
 .t-label {
 	font: var(--t-label);
 	text-transform: uppercase;
@@ -297,29 +308,37 @@ blockquote {
 .c-4 {
 	/* c for contain */
 	position: relative;
-	width: calc(100vw - var(--s-gutter) * 2);
+	width: calc(100vw - var(--s-gutter-sm) * 2);
 	max-width: var(--s-contain-max);
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.c-1,
+.c-1 {
+	width: calc(100vw - var(--s-gutter) * 2);
+}
+.c-2 {
+	width: calc(100vw - var(--s-gutter-md) * 2);
+}
+.c-3 {
+	width: calc(100vw - var(--s-gutter-lg) * 2);
+}
+.c-4 {
+	width: calc(100vw - var(--s-gutter-xl) * 2);
+}
+
 .w-1 {
 	max-width: var(--w-1);
 }
-.c-2,
 .w-2 {
 	max-width: var(--w-2);
 }
-.c-3,
 .w-3 {
 	max-width: var(--w-3);
 }
-.c-4,
 .w-4 {
 	max-width: var(--w-4);
 }
-.c-5,
 .w-5 {
 	max-width: var(--w-5);
 }

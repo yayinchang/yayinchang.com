@@ -5,48 +5,48 @@ import {
 import { CaseIcon } from '@sanity/icons';
 import customImage from '../../lib/custom-image';
 
-const Logo = ({ ...props }) => {
-	return {
-		title: 'Logo',
-		name: 'Logo',
-		type: 'object',
-		options: { collapsible: true },
-		fieldsets: [
-			{
-				name: 'options',
-				options: { columns: 2 },
-			},
-		],
-		fields: [
-			customImage({
-				title: 'Image',
-				name: 'image',
-				hasDisplayOptions: false,
-			}),
-			{
-				title: 'Width (px)',
-				name: 'width',
-				type: 'number',
-				fieldset: 'options',
-				validation: (Rule) =>
-					Rule.integer()
-						.positive()
-						.error('Width must be a positive integer in px'),
-			},
-			{
-				title: 'Height (px)',
-				name: 'height',
-				type: 'number',
-				fieldset: 'options',
-				validation: (Rule) =>
-					Rule.integer()
-						.positive()
-						.error('Height must be a positive integer in px'),
-			},
-		],
-		...props,
-	};
-};
+// const Logo = ({ ...props }) => {
+// 	return {
+// 		title: 'Logo',
+// 		name: 'Logo',
+// 		type: 'object',
+// 		options: { collapsible: true },
+// 		fieldsets: [
+// 			{
+// 				name: 'options',
+// 				options: { columns: 2 },
+// 			},
+// 		],
+// 		fields: [
+// 			customImage({
+// 				title: 'Image',
+// 				name: 'image',
+// 				hasDisplayOptions: false,
+// 			}),
+// 			{
+// 				title: 'Width (px)',
+// 				name: 'width',
+// 				type: 'number',
+// 				fieldset: 'options',
+// 				validation: (Rule) =>
+// 					Rule.integer()
+// 						.positive()
+// 						.error('Width must be a positive integer in px'),
+// 			},
+// 			{
+// 				title: 'Height (px)',
+// 				name: 'height',
+// 				type: 'number',
+// 				fieldset: 'options',
+// 				validation: (Rule) =>
+// 					Rule.integer()
+// 						.positive()
+// 						.error('Height must be a positive integer in px'),
+// 			},
+// 		],
+// 		...props,
+// 	};
+// };
 
 export default {
 	title: 'Work',
@@ -54,13 +54,6 @@ export default {
 	type: 'document',
 	icon: CaseIcon,
 	orderings: [orderRankOrdering],
-	fieldsets: [
-		{
-			title: 'Image',
-			name: 'images',
-			options: { collapsible: true },
-		},
-	],
 	fields: [
 		orderRankField({ type: 'work' }),
 		{
@@ -82,39 +75,21 @@ export default {
 			validation: (Rule) => Rule.required(),
 		},
 		{
+			title: 'Type',
+			name: 'type',
+			type: 'reference',
+			to: [{ type: 'workType' }],
+		},
+		{
 			title: 'Tags',
 			name: 'tags',
 			type: 'array',
-			of: [{ type: 'tag' }],
-		},
-		Logo(),
-		{
-			title: 'Theme Color',
-			name: 'themeColor',
-			type: 'reference',
-			to: [{ type: 'solidColor' }],
+			of: [{ type: 'reference', to: { type: 'tag' } }],
 		},
 		{
-			title: 'Main Image',
-			name: 'mainImage',
-			type: 'object',
-			options: {
-				collapsible: true,
-			},
-			fields: [
-				customImage({
-					title: 'Desktop',
-					name: 'desktop',
-					hasDisplayOptions: false,
-				}),
-				customImage({
-					title: 'Mobile',
-					name: 'mobile',
-					description: '(optional)',
-					hasDisplayOptions: false,
-				}),
-			],
-			fieldset: 'images',
+			title: 'Link',
+			name: 'link',
+			type: 'url',
 		},
 		{
 			title: 'Overview',
@@ -122,6 +97,11 @@ export default {
 			type: 'text',
 			rows: 3,
 		},
+		customImage({
+			title: 'Cover Image',
+			name: 'coverImage',
+			hasDisplayOptions: false,
+		}),
 		{
 			title: 'Date',
 			name: 'date',

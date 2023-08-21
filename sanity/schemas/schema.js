@@ -4,6 +4,7 @@
 import solidColor from './documents/color';
 import menu from './documents/menu';
 import tag from './documents/tag';
+import workType from './documents/type';
 
 import work from './documents/work';
 
@@ -42,6 +43,7 @@ const schemas = [
 	solidColor,
 	menu,
 	tag,
+	workType,
 
 	work,
 
