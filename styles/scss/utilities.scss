@@ -504,13 +504,13 @@ blockquote {
 	display: none !important;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
 	.tablet-up-only {
 		display: none !important;
 	}
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1025px) {
 	.tablet-down-only {
 		display: none !important;
 	}
@@ -524,6 +524,20 @@ blockquote {
 
 @media (min-width: 601px) {
 	.mobile-down-only {
+		display: none !important;
+	}
+}
+
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+	.mouse-screen-only {
+		display: none !important;
+	}
+}
+
+/* mouse, touch pad */
+@media (hover: hover) and (pointer: fine) {
+	.touch-screen-only {
 		display: none !important;
 	}
 }

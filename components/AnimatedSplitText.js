@@ -1,7 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
-const BrandTitle = ({ children }) => {
+const AnimatedSplitText = ({ yTransform = '50px', children }) => {
+	const { ref, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0,
+	});
+
 	const wordAnimation = {
 		hidden: {},
 		visible: {},
@@ -10,7 +16,7 @@ const BrandTitle = ({ children }) => {
 	const characterAnimation = {
 		hidden: {
 			opacity: 0,
-			y: '4vw',
+			y: yTransform,
 		},
 		visible: {
 			delay: 0.4,
@@ -25,12 +31,13 @@ const BrandTitle = ({ children }) => {
 
 	return children.split(' ').map((word, index) => {
 		return (
-			<motion.div
+			<motion.span
+				ref={ref}
 				key={index}
 				className="stagger-word user-select-disable"
 				aria-hidden="true"
-				initial="hidden"
-				animate={'visible'}
+				initial={inView ? 'visible' : 'hidden'}
+				animate={inView ? 'visible' : 'hidden'}
 				variants={wordAnimation}
 				transition={{
 					delayChildren: index * 0.25,
@@ -49,9 +56,9 @@ const BrandTitle = ({ children }) => {
 						</motion.span>
 					);
 				})}
-			</motion.div>
+			</motion.span>
 		);
 	});
 };
 
-export default BrandTitle;
+export default AnimatedSplitText;

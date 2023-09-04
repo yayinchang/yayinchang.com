@@ -108,7 +108,7 @@ const CustomPortableText = ({ blocks, classNames }) => {
 							top: 0;
 							left: 0;
 							background-color: var(--cr-white);
-							transition: width 0.4s 0.2s var(--e-inOut-Expo);
+							transition: width 0.6s 0.2s var(--e-inOut-Expo);
 							z-index: -1;
 						}
 					}

@@ -2,10 +2,11 @@ import React from 'react';
 import { getCustomPages, queries } from '@/data';
 import { useInView } from 'react-intersection-observer';
 import cx from 'classnames';
-import BrandTitle from '@/components/BrandTitle';
+import AnimatedSplitText from '@/components/AnimatedSplitText';
 import ScrollArrows from '@/components/ScrollArrows';
 import CustomLink from '@/components/CustomLink';
 import CustomPortableText from '@/components/CustomPortableText';
+import WorkList from '@/container/WorkList';
 import theme from '@/styles/theme';
 
 const Hero = ({ data = {} }) => {
@@ -21,7 +22,7 @@ const Hero = ({ data = {} }) => {
 		<>
 			<section className="homepage-hero f-v f-j-b gap-gutter">
 				<h1 className="homepage-hero-title">
-					<BrandTitle>{site.title}</BrandTitle>
+					<AnimatedSplitText yTransform="6vw">{site.title}</AnimatedSplitText>
 				</h1>
 				{(intro || aboutCTA) && (
 					<div
@@ -47,8 +48,10 @@ const Hero = ({ data = {} }) => {
 			<style jsx>{`
 				.homepage-hero {
 					position: relative;
-					padding: var(--s-gutter-md);
+					width: 100vw;
 					min-height: var(--s-vp-height);
+					padding: var(--s-gutter-md);
+					overflow: hidden;
 
 					&-title {
 						font-size: 16.5vw;
@@ -60,102 +63,6 @@ const Hero = ({ data = {} }) => {
 
 					:global(.portable-text .is-highlighted::before) {
 						transition-delay: 0.6s;
-					}
-				}
-			`}</style>
-		</>
-	);
-};
-
-const WorkList = ({ data = {} }) => {
-	if (!(data.length > 0)) return;
-
-	return (
-		<>
-			<section className="works">
-				<div className="work-labels">
-					<div className="c-4 f-h">
-						<div className="work-title t-label">Project</div>
-						<div className="work-subtitle t-label">Type</div>
-					</div>
-				</div>
-				{data.map((work) => {
-					const { _id, title, type, link } = work;
-
-					return (
-						<div key={_id} className="work">
-							<div className="work-heading c-4 f-h">
-								<h3 className="work-title t-title">{title}</h3>
-								{type && <p className="work-subtitle t-subtitle">{type}</p>}
-							</div>
-							{link && (
-								<a
-									href={link}
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label={`Visit ${title}`}
-									className="p-fill"
-								></a>
-							)}
-						</div>
-					);
-				})}
-			</section>
-			<style jsx>{`
-				.works {
-					padding-top: var(--s-gutter-xl);
-				}
-
-				.work {
-					position: relative;
-					border-bottom: 1px solid var(--cr-white);
-
-					&::before {
-						content: '';
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 0;
-						height: 100%;
-						background-color: var(--cr-white);
-						transition: width 0.4s var(--e-inOut-Expo);
-					}
-
-					@media (hover: hover) {
-						&:hover {
-							&::before {
-								width: 100%;
-							}
-
-							.work-title,
-							.work-subtitle {
-								color: var(--cr-black);
-							}
-						}
-					}
-
-					&-labels {
-						border-top: 1px solid var(--cr-white);
-						border-bottom: 1px solid var(--cr-white);
-						padding: var(--s-gutter-sm) 0;
-					}
-
-					&-heading {
-						position: relative;
-						padding: var(--s-gutter) 0;
-					}
-
-					&-title,
-					&-subtitle {
-						transition: color 0.4s var(--e-inOut-Expo);
-					}
-
-					&-title {
-						flex: 0 0 60%;
-						padding-right: var(--s-gutter);
-					}
-					&-subtitle {
-						flex: 0 0 40%;
 					}
 				}
 			`}</style>
@@ -192,7 +99,10 @@ export async function getStaticProps({ preview = {}, previewData }) {
 						_id,
 						title
 					},
-					link
+					link,
+					coverImage{
+						${queries.imageMeta}
+					}
 				},
 			}`,
 		{
