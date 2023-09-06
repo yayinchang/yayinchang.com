@@ -3,8 +3,9 @@ import {
 	Header2,
 	Header3,
 	Highlight,
+	TC,
 } from '@/sanity/components/block-renders';
-import { SparkleIcon } from '@sanity/icons';
+import { TranslateIcon, SparkleIcon } from '@sanity/icons';
 
 export default {
 	title: 'Portable Text',
@@ -57,6 +58,12 @@ export default {
 						value: 'highlight',
 						icon: SparkleIcon,
 						component: Highlight,
+					},
+					{
+						title: 'TC',
+						value: 'tc',
+						icon: TranslateIcon,
+						component: TC,
 					},
 				],
 				annotations: [

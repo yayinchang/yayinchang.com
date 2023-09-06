@@ -79,6 +79,8 @@ const Work = ({
 						height: 1px;
 						background-color: var(--cr-white);
 						transition: width 0.6s 0.2s var(--e-inOut-Expo);
+						mix-blend-mode: exclusion;
+						z-index: 2;
 					}
 
 					&.is-animated {

@@ -88,6 +88,38 @@
 	font-display: block;
 }
 
+@font-face {
+	font-family: 'Noto Sans TC';
+	src: url('/fonts/font-noto-sans-tc-thin.woff2') format('woff2');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Noto Sans TC';
+	src: url('/fonts/font-noto-sans-tc-extra-light.woff2') format('woff2');
+	font-weight: 200;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Noto Sans TC';
+	src: url('/fonts/font-noto-sans-tc-light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Noto Sans TC';
+	src: url('/fonts/font-noto-sans-tc-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
 /*	U1 SETTINGS	*/
 
 :root {
@@ -96,18 +128,22 @@
 	--cr-subdued: #e2e2e2;
 	--cr-gray: #9ba4b5;
 
-	--t-heading-1: 200 max(6vw, 72px) / 1.1 'Neue Haas Grotesk Display', Helvetica,
+	--t-heading-1: 200 max(6vw, 72px) / 1.1 'Neue Haas Grotesk Display',
+		'Noto Sans TC', Helvetica, sans-serif;
+	--t-heading-2: 200 max(5vw, 64px) / 1.3 'Neue Haas Grotesk Display',
+		'Noto Sans TC', Helvetica, sans-serif;
+	--t-heading-3: 200 min(3vw, 32px) / 1.3 'Neue Haas Grotesk Display',
+		'Noto Sans TC', Helvetica, sans-serif;
+	--t-title: 700 56px / 1.2 'Neue Haas Grotesk Display', 'Noto Sans TC',
+		Helvetica, sans-serif;
+	--t-subtitle: 100 56px / 1.2 'Neue Haas Grotesk Display', 'Noto Sans TC',
+		Helvetica, sans-serif;
+	--t-body: 300 20px/1.5 'Neue Haas Grotesk Display', 'Noto Sans TC', Helvetica,
 		sans-serif;
-	--t-heading-2: 200 max(5vw, 64px) / 1.3 'Neue Haas Grotesk Display', Helvetica,
+	--t-label: 300 16px/1 'Neue Haas Grotesk Display', 'Noto Sans TC', Helvetica,
 		sans-serif;
-	--t-heading-3: 200 min(3vw, 32px) / 1.3 'Neue Haas Grotesk Display', Helvetica,
-		sans-serif;
-	--t-title: 700 56px / 1.2 'Neue Haas Grotesk Display', Helvetica, sans-serif;
-	--t-subtitle: 100 56px / 1.2 'Neue Haas Grotesk Display', Helvetica,
-		sans-serif;
-	--t-body: 300 20px/1.5 'Neue Haas Grotesk Display', Helvetica, sans-serif;
-	--t-label: 300 16px/1 'Neue Haas Grotesk Display', Helvetica, sans-serif;
-	--t-label-light: 200 16px/1 'Neue Haas Grotesk Display', Helvetica, sans-serif;
+	--t-label-light: 200 16px/1 'Neue Haas Grotesk Display', 'Noto Sans TC',
+		Helvetica, sans-serif;
 
 	--w-1: 1200px;
 	--w-2: 800px;
@@ -251,6 +287,10 @@ ul,
 .t-label-light {
 	font: var(--t-label-light);
 	letter-spacing: 0.05em;
+}
+
+.t-tc {
+	font-family: 'Noto Sans TC', Helvetica, sans-serif;
 }
 
 .t-light {

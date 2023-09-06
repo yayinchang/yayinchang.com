@@ -65,6 +65,30 @@ class MyDocument extends Document {
 						as="font"
 						crossOrigin=""
 					/>
+					<link
+						rel="preload"
+						href="/fonts/font-noto-sans-tc-thin.woff2"
+						as="font"
+						crossOrigin=""
+					/>
+					<link
+						rel="preload"
+						href="/fonts/font-noto-sans-tc-extra-light.woff2"
+						as="font"
+						crossOrigin=""
+					/>
+					<link
+						rel="preload"
+						href="/fonts/font-noto-sans-tc-light.woff2"
+						as="font"
+						crossOrigin=""
+					/>
+					<link
+						rel="preload"
+						href="/fonts/font-noto-sans-tc-regular.woff2"
+						as="font"
+						crossOrigin=""
+					/>
 				</Head>
 				<body>
 					<Main />

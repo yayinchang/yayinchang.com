@@ -31,6 +31,7 @@ const myPortableTextComponents = {
 		highlight: ({ children }) => (
 			<span className="is-highlighted">{children}</span>
 		),
+		tc: ({ children }) => <span className="t-tc">{children}</span>,
 		link: ({ value, children }) => {
 			return <CustomLink link={{ ...value, ...{ title: children[0] } }} />;
 		},

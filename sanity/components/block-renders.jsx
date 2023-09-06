@@ -67,3 +67,14 @@ export const Highlight = (props) => (
 		{props.children}
 	</span>
 );
+
+export const TC = (props) => (
+	<span
+		style={{
+			display: 'inline-block',
+			border: '1px solid #9ba4b5',
+		}}
+	>
+		{props.children}
+	</span>
+);

@@ -4,6 +4,7 @@ import {
 } from '@sanity/orderable-document-list';
 import { CaseIcon } from '@sanity/icons';
 import customImage from '../../lib/custom-image';
+import { getPtPreview } from '../../lib/helpers';
 
 // const Logo = ({ ...props }) => {
 // 	return {
@@ -103,6 +104,11 @@ export default {
 			hasDisplayOptions: false,
 		}),
 		{
+			title: 'Client',
+			name: 'client',
+			type: 'string',
+		},
+		{
 			title: 'Date',
 			name: 'date',
 			type: 'string',
@@ -112,12 +118,6 @@ export default {
 			name: 'roles',
 			type: 'array',
 			of: [{ type: 'string' }],
-		},
-		{
-			title: 'Links',
-			name: 'links',
-			type: 'array',
-			of: [{ type: 'linkSet' }],
 		},
 		{
 			title: 'Description',
@@ -139,14 +139,14 @@ export default {
 		select: {
 			title: 'title',
 			slug: 'slug',
-			logo: 'logo.image.asset',
+			coverImage: 'coverImage.asset',
 		},
-		prepare({ title = 'Untitled', slug, logo }) {
+		prepare({ title = 'Untitled', slug, coverImage }) {
 			const path = `/work/${slug.current}`;
 			return {
 				title,
 				subtitle: slug.current ? path : '(missing slug)',
-				media: logo ?? CaseIcon,
+				media: coverImage ?? CaseIcon,
 			};
 		},
 	},
