@@ -20,10 +20,10 @@ const Hero = ({ data = {} }) => {
 
 	return (
 		<>
-			<section className="homepage-hero f-v f-j-b gap-gutter">
-				<h1 className="homepage-hero-title">
+			<section className="homepage-hero f-v f-j-e gap-gutter">
+				{/* <h1 className="homepage-hero-title">
 					<AnimatedSplitText yTransform="6vw">{site.title}</AnimatedSplitText>
-				</h1>
+				</h1> */}
 				{(intro || aboutCTA) && (
 					<div
 						ref={ref}

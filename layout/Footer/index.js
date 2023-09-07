@@ -47,15 +47,6 @@ const Footer = forwardRef(function Footer(props, ref) {
 							)}
 							{data?.social?.length > 0 && (
 								<div className="footer-social f-h gap-6">
-									<Link
-										href={`mailto:${data.email}`}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="social-link cr-gray"
-										aria-label={`Contact ${data.title} by e-mail`}
-									>
-										<SvgIcon type="envelope" />
-									</Link>
 									{data.social.map((link) => {
 										return (
 											<Link

@@ -1,19 +1,28 @@
-import React, { useCallback, useLayoutEffect, useRef } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
-import { removeQueryString } from '@/lib/helpers';
-import { domTransitionAnim } from '@/lib/animate';
+import Link from 'next/link';
+import cx from 'classnames';
+import {
+	useScroll,
+	useMotionValueEvent,
+	AnimatePresence,
+	motion,
+} from 'framer-motion';
 import useWindowDimensions from '@/hooks/useWindowDimensions';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import BrandLogo from '@/components/BrandLogo';
-import Menu from '@/components/Menu';
-
-gsap.registerPlugin(ScrollTrigger);
+import BrandIcon from '@/components/BrandIcon';
+import { fadeAnim } from '@/lib/animate';
 
 export default function Header({ data }) {
 	const router = useRouter();
 	const windows = useWindowDimensions();
-	const ref = useRef();
+	const [isShrink, setIsShrink] = useState(false);
+	const { scrollY } = useScroll();
+	const logoWidth = 96;
+
+	useMotionValueEvent(scrollY, 'change', (latest) => {
+		setIsShrink(latest > 100);
+	});
 
 	const headerRef = useCallback(
 		(node) => {
@@ -27,67 +36,37 @@ export default function Header({ data }) {
 		[windows.width]
 	);
 
-	useLayoutEffect(() => {
-		const ctx = gsap.context(() => {
-			gsap.to(ref.current, {
-				autoAlpha: 1,
-				duration: 1,
-				ease: 'power2',
-			});
-
-			if (router.pathname === '/') {
-				gsap.set(ref.current, {
-					pointerEvents: 'none',
-				});
-
-				gsap.set('.js-brand-logo', {
-					autoAlpha: 0.05,
-					x: '-12vw',
-					y: '5vw',
-					width: '50vw',
-					height: '50vw',
-					pointerEvents: 'none',
-				});
-
-				gsap.to('.js-brand-logo', {
-					x: 0,
-					y: 0,
-					width: '40px',
-					height: '40px',
-					duration: 1,
-					ease: 'power2.Out',
-					scrollTrigger: {
-						trigger: ref.current,
-						start: 'top top',
-						end: () => '+=' + window.innerHeight,
-						scrub: true,
-					},
-				});
-			}
-		});
-
-		return () => ctx.revert(); // cleanup
-	}, [router]);
-
 	return (
 		<>
-			<header
-				key={removeQueryString(router.asPath)}
-				initial="initial"
-				animate="animate"
-				exit="exit"
-				transition={domTransitionAnim.transition}
-				variants={domTransitionAnim}
-				ref={headerRef}
-				className="global-header"
-			>
-				<div ref={ref} className="main-header c f-h f-a-c">
-					<BrandLogo />
-					{data?.menu?.items && (
-						<Menu
-							items={data.menu.items}
-							classNames="head-menu f-h f-a-c gap-5"
-						/>
+			<header ref={headerRef} className="global-header">
+				<div className="header-wrapper">
+					<AnimatePresence mode="wait">
+						{router.pathname === '/' && (
+							<motion.div
+								initial="hide"
+								animate="show"
+								exit="hide"
+								variants={fadeAnim}
+								transition={fadeAnim.transition}
+								className={cx('header-logo-feature p-fill', {
+									'is-shrink': isShrink,
+								})}
+							>
+								<BrandLogo />
+							</motion.div>
+						)}
+					</AnimatePresence>
+
+					{router.pathname !== '/' && (
+						<Link
+							className={cx('header-logo', {
+								'is-hide': router.pathname === '/',
+							})}
+							href="/"
+							aria-label="Link to Homepage"
+						>
+							<BrandLogo />
+						</Link>
 					)}
 				</div>
 			</header>
@@ -103,20 +82,31 @@ export default function Header({ data }) {
 					z-index: 99;
 				}
 
-				.main-header {
-					padding: var(--s-gutter) 0;
-					opacity: 0;
-					transition: opacity 0.2s;
+				.header-wrapper {
+					position: relative;
+					padding: var(--s-gutter-md);
+				}
 
-					.menu-link {
-						color: var(--cr-gray);
-						transition: color 0.2s;
+				.header-logo-feature {
+					top: var(--s-gutter-md);
+					left: var(--s-gutter-md);
+					width: calc(100% - var(--s-gutter-md) * 2);
+					pointer-events: none;
+					transition: width 0.5s;
 
-						@media (hover: hover) {
-							&:hover {
-								color: var(--cr-white);
-							}
-						}
+					&.is-shrink {
+						width: ${logoWidth}px;
+					}
+				}
+
+				.header-logo {
+					display: block;
+					width: ${logoWidth}px;
+					pointer-events: auto;
+
+					&.is-hide {
+						opacity: 0;
+						pointer-events: none;
 					}
 				}
 			`}</style>
