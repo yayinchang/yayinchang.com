@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import NextLink from 'next/link';
 import cx from 'classnames';
 import { getStaticRoute, getDynamicRoute } from '@/lib/routes';
+import { CursorContext } from '@/context/CursorProvider';
 
 const CustomLink = ({ link, children, classNames, ...rest }) => {
+	const { cursorChangeHandler } = useContext(CursorContext);
 	const isLink = !!link.url;
 	const isStatic = getStaticRoute(link.page?.type);
 
@@ -14,6 +16,8 @@ const CustomLink = ({ link, children, classNames, ...rest }) => {
 				href={link.url}
 				target={!link.url.match('^mailto:') && link.blank ? '_blank' : null}
 				rel={link.blank ? 'noopener noreferrer' : null}
+				onMouseEnter={() => cursorChangeHandler('link')}
+				onMouseLeave={() => cursorChangeHandler(false)}
 				className={cx(link.styles?.style, classNames, {
 					btn: link.isButton,
 				})}
@@ -39,6 +43,8 @@ const CustomLink = ({ link, children, classNames, ...rest }) => {
 				scroll={false}
 				target={link.blank ? '_blank' : null}
 				rel={link.blank ? 'noopener noreferrer' : null}
+				onMouseEnter={() => cursorChangeHandler('link')}
+				onMouseLeave={() => cursorChangeHandler(false)}
 				className={cx(link.styles?.style, classNames, {
 					'btn btn--text': link.isButton,
 				})}

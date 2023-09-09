@@ -232,7 +232,7 @@ a {
 	text-decoration: none;
 	border: none;
 	outline: none;
-	cursor: pointer;
+	cursor: none;
 	color: inherit;
 }
 
@@ -276,5 +276,5 @@ button {
 
 button,
 input[type='submit'] {
-	cursor: pointer;
+	cursor: none;
 }

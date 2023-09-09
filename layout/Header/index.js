@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useContext, useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import cx from 'classnames';
@@ -9,6 +9,7 @@ import {
 	motion,
 } from 'framer-motion';
 import useWindowDimensions from '@/hooks/useWindowDimensions';
+import { CursorContext } from '@/context/CursorProvider';
 import BrandLogo from '@/components/BrandLogo';
 import BrandIcon from '@/components/BrandIcon';
 import { fadeAnim } from '@/lib/animate';
@@ -16,6 +17,7 @@ import { fadeAnim } from '@/lib/animate';
 export default function Header({ data }) {
 	const router = useRouter();
 	const windows = useWindowDimensions();
+	const { cursorChangeHandler } = useContext(CursorContext);
 	const [isShrink, setIsShrink] = useState(false);
 	const { scrollY } = useScroll();
 	const logoWidth = 96;
@@ -63,6 +65,8 @@ export default function Header({ data }) {
 								'is-hide': router.pathname === '/',
 							})}
 							href="/"
+							onMouseEnter={() => cursorChangeHandler('link')}
+							onMouseLeave={() => cursorChangeHandler(false)}
 							aria-label="Link to Homepage"
 						>
 							<BrandLogo />

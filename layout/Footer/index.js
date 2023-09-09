@@ -1,4 +1,4 @@
-import React, { useEffect, forwardRef } from 'react';
+import React, { useContext, useEffect, forwardRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
@@ -10,9 +10,11 @@ import {
 import { removeQueryString } from '@/lib/helpers';
 import { domTransitionAnim } from '@/lib/animate';
 import SvgIcon from '@/components/SvgIcons';
+import { CursorContext } from '@/context/CursorProvider';
 
 const Footer = forwardRef(function Footer(props, ref) {
 	const { data = {} } = props;
+	const { cursorChangeHandler } = useContext(CursorContext);
 	const router = useRouter();
 
 	useEffect(() => {
@@ -54,6 +56,8 @@ const Footer = forwardRef(function Footer(props, ref) {
 												href={link.url}
 												target="_blank"
 												rel="noopener noreferrer"
+												onMouseEnter={() => cursorChangeHandler('link')}
+												onMouseLeave={() => cursorChangeHandler(false)}
 												className="social-link cr-gray"
 												aria-label={`Visit ${data.title}'s ${link.icon}`}
 											>

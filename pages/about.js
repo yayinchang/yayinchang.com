@@ -1,4 +1,11 @@
-import React, { useRef, useState, useLayoutEffect, useCallback } from 'react';
+import React, {
+	useContext,
+	useRef,
+	useState,
+	useLayoutEffect,
+	useCallback,
+} from 'react';
+import Link from 'next/link';
 import { getCustomPages, queries } from '@/data';
 import { useInView } from 'react-intersection-observer';
 import ResizeObserver from 'resize-observer-polyfill';
@@ -10,13 +17,14 @@ import {
 	useMotionValueEvent,
 } from 'framer-motion';
 import cx from 'classnames';
+import { CursorContext } from '@/context/CursorProvider';
 import Photo from '@/components/Photo';
 import SvgIcons from '@/components/SvgIcons';
 import ScrollArrows from '@/components/ScrollArrows';
 import theme from '@/styles/theme';
-import Link from 'next/link';
 
 const List = ({ data = {} }) => {
+	const { cursorChangeHandler } = useContext(CursorContext);
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0,
@@ -41,15 +49,17 @@ const List = ({ data = {} }) => {
 							})}
 						>
 							{link ? (
-								<a
+								<Link
 									href={link}
 									target="_blank"
 									rel="noopener noreferrer"
+									onMouseEnter={() => cursorChangeHandler('link')}
+									onMouseLeave={() => cursorChangeHandler(false)}
 									className="about-block-link f-h f-j-s f-a-c gap-2"
 								>
 									{title}
 									<SvgIcons type="link" />
-								</a>
+								</Link>
 							) : (
 								title
 							)}

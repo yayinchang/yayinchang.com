@@ -5,6 +5,8 @@ import * as ga from '@/lib/ga';
 import Layout from '@/layout';
 import useScrollRestoration from '@/hooks/useScrollRestoration';
 import useWindowDimensions from '@/hooks/useWindowDimensions';
+import CursorProvider from '@/context/CursorProvider';
+import Cursor from '@/components/Cursor';
 
 function App({ Component, pageProps }) {
 	const { data } = pageProps;
@@ -40,9 +42,12 @@ function App({ Component, pageProps }) {
 	}
 
 	return (
-		<Layout siteData={data.site} pageData={data.page}>
-			<Component {...pageProps} />
-		</Layout>
+		<CursorProvider>
+			<Cursor />
+			<Layout siteData={data.site} pageData={data.page}>
+				<Component {...pageProps} />
+			</Layout>
+		</CursorProvider>
 	);
 }
 

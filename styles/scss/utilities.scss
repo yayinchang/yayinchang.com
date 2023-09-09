@@ -595,13 +595,14 @@ blockquote {
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	text-align: center;
+	padding: 12px 0;
 	white-space: nowrap;
 	background: transparent;
 	box-shadow: none;
 	outline: none;
 	user-select: none;
 	pointer-events: auto;
-	cursor: pointer;
+	cursor: none;
 
 	color: var(--cr-white);
 

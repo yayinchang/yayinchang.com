@@ -1,6 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import cx from 'classnames';
+import useMousePosition from '@/hooks/useMousePosition';
+import { CursorContext } from '@/context/CursorProvider';
 import AnimatedSplitText from '@/components/AnimatedSplitText';
 import Photo from '@/components/Photo';
 
@@ -19,6 +22,7 @@ const Work = ({
 		triggerOnce: true,
 		threshold: 1,
 	});
+	const { cursorChangeHandler } = useContext(CursorContext);
 
 	return (
 		<>
@@ -45,8 +49,8 @@ const Work = ({
 					<div
 						className="work-thumbnail mouse-screen-only"
 						style={{
-							top: `${mouseY + 10}px`,
-							left: `${mouseX + 10}px`,
+							top: `${mouseY + 28}px`,
+							left: `${mouseX + 28}px`,
 						}}
 					>
 						<Photo
@@ -57,13 +61,15 @@ const Work = ({
 					</div>
 				)}
 				{link && (
-					<a
+					<Link
 						href={link}
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label={`Visit ${title}`}
+						onMouseEnter={() => cursorChangeHandler('view-work')}
+						onMouseLeave={() => cursorChangeHandler(false)}
 						className="work-link p-fill"
-					></a>
+					/>
 				)}
 			</div>
 			<style jsx>{`
@@ -92,13 +98,14 @@ const Work = ({
 					&-heading {
 						position: relative;
 						padding: var(--s-gutter) 0;
+						pointer-events: none;
+						z-index: 2;
 					}
 
 					&-title,
 					&-subtitle {
 						transition: color 0.4s var(--e-inOut-Expo);
 						mix-blend-mode: exclusion;
-						z-index: 2;
 					}
 
 					&-title {
@@ -111,10 +118,11 @@ const Work = ({
 					}
 
 					&-thumbnail {
-						position: absolute;
+						position: fixed;
 						width: auto;
 						height: 0;
 						opacity: 0;
+						pointer-events: none;
 
 						.is-hovered & {
 							opacity: 1;
@@ -138,27 +146,12 @@ const Work = ({
 const WorkList = ({ data = {} }) => {
 	if (!(data.length > 0)) return;
 
-	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 	const [hoverEl, setHoverEl] = useState(null);
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0,
 	});
-
-	const onMouseMove = (event) => {
-		const { offsetX: x, offsetY: y } = event;
-		setMousePosition({ x, y });
-	};
-
-	useEffect(() => {
-		document.addEventListener('mousemove', onMouseMove);
-
-		return () => {
-			document.removeEventListener('mousemove', onMouseMove);
-		};
-	});
-
-	const { x, y } = mousePosition;
+	const { x, y } = useMousePosition();
 
 	return (
 		<>
