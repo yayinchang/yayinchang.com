@@ -11,6 +11,7 @@ import { removeQueryString } from '@/lib/helpers';
 import { domTransitionAnim } from '@/lib/animate';
 import SvgIcon from '@/components/SvgIcons';
 import { CursorContext } from '@/context/CursorProvider';
+import theme from '@/styles/theme';
 
 const Footer = forwardRef(function Footer(props, ref) {
 	const { data = {} } = props;
@@ -41,12 +42,6 @@ const Footer = forwardRef(function Footer(props, ref) {
 						className="global-footer"
 					>
 						<div className="main-footer f-h f-a-c gap-6">
-							{data?.siteCopyright && (
-								<div className="footer-copyright t-label-light cr-gray">
-									&copy; {new Date().getFullYear()} {data.siteCopyright}{' '}
-									{data.title}
-								</div>
-							)}
 							{data?.social?.length > 0 && (
 								<div className="footer-social f-h gap-6">
 									{data.social.map((link) => {
@@ -67,6 +62,12 @@ const Footer = forwardRef(function Footer(props, ref) {
 									})}
 								</div>
 							)}
+							{data?.siteCopyright && (
+								<div className="footer-copyright t-label-light cr-gray">
+									&copy; {new Date().getFullYear()} {data.siteCopyright}{' '}
+									{data.title}
+								</div>
+							)}
 						</div>
 					</motion.footer>
 				</AnimatePresence>
@@ -75,6 +76,11 @@ const Footer = forwardRef(function Footer(props, ref) {
 			<style global jsx>{`
 				.main-footer {
 					padding: var(--s-gutter-md);
+
+					@media screen and (max-width: ${theme.layout.mobile}px) {
+						flex-direction: column;
+						align-items: flex-start;
+					}
 				}
 
 				.footer-social {

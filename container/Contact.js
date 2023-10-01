@@ -3,6 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import cx from 'classnames';
 import { CursorContext } from '@/context/CursorProvider';
 import AnimatedSplitText from '@/components/AnimatedSplitText';
+import theme from '@/styles/theme';
 
 const Contact = ({ data = {} }) => {
 	if (!data) return;
@@ -53,6 +54,7 @@ const Contact = ({ data = {} }) => {
 			<style jsx>{`
 				.contact {
 					padding: var(--s-gutter-md);
+					overflow: hidden;
 
 					&-email {
 						position: relative;
@@ -95,6 +97,10 @@ const Contact = ({ data = {} }) => {
 							&:after {
 								opacity: 1;
 							}
+						}
+
+						@media screen and (max-width: ${theme.layout.mobile}px) {
+							font-size: 8.5vw;
 						}
 					}
 				}

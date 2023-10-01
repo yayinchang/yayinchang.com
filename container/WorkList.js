@@ -6,6 +6,7 @@ import useMousePosition from '@/hooks/useMousePosition';
 import { CursorContext } from '@/context/CursorProvider';
 import AnimatedSplitText from '@/components/AnimatedSplitText';
 import Photo from '@/components/Photo';
+import theme from '@/styles/theme';
 
 const Work = ({
 	data = {},
@@ -40,7 +41,7 @@ const Work = ({
 						<AnimatedSplitText>{title}</AnimatedSplitText>
 					</h3>
 					{type && (
-						<p className="work-subtitle t-subtitle">
+						<p className="work-subtitle t-title t-light">
 							<AnimatedSplitText>{type}</AnimatedSplitText>
 						</p>
 					)}
@@ -100,6 +101,10 @@ const Work = ({
 						padding: var(--s-gutter) 0;
 						pointer-events: none;
 						z-index: 2;
+
+						@media screen and (max-width: ${theme.layout.mobile}px) {
+							flex-direction: column;
+						}
 					}
 
 					&-title,
@@ -190,6 +195,10 @@ const WorkList = ({ data = {} }) => {
 					width: 100vw;
 					overflow: hidden;
 
+					@media screen and (max-width: ${theme.layout.mobile}px) {
+						margin-top: var(--s-gutter-md);
+					}
+
 					&-labels {
 						position: relative;
 						padding: var(--s-gutter-sm) 0;
@@ -216,6 +225,13 @@ const WorkList = ({ data = {} }) => {
 							&::before,
 							&:after {
 								width: 100%;
+							}
+						}
+
+						@media screen and (max-width: ${theme.layout.mobile}px) {
+							.f-h {
+								flex-direction: column;
+								gap: 4px;
 							}
 						}
 					}
