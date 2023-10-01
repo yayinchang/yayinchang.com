@@ -1,11 +1,8 @@
 const theme = {
-  layout: {
-    mediaXsmall: 375,
-    mediaSmall: 688,
-    mediaMedium: 992,
-    mediaLarge: 1312,
-    mediaXlarge: 1920,
-  },
+	layout: {
+		mobile: 600,
+		tablet: 1024,
+	},
 };
 
 export default theme;

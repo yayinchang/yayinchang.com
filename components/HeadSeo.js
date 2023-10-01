@@ -48,12 +48,12 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
 			<link
 				href="/favicon-light.png"
 				rel="icon"
-				media="(prefers-color-scheme: light)"
+				media="(prefers-color-scheme: dark)"
 			/>
 			<link
 				href="/favicon-dark.png"
 				rel="icon"
-				media="(prefers-color-scheme: dark)"
+				media="(prefers-color-scheme: light)"
 			/>
 			<link
 				rel="apple-touch-icon"

@@ -2,11 +2,11 @@ import React from 'react';
 import { getCustomPages, queries } from '@/data';
 import { useInView } from 'react-intersection-observer';
 import cx from 'classnames';
-import AnimatedSplitText from '@/components/AnimatedSplitText';
 import ScrollArrows from '@/components/ScrollArrows';
 import CustomLink from '@/components/CustomLink';
 import CustomPortableText from '@/components/CustomPortableText';
 import WorkList from '@/container/WorkList';
+import Contact from '@/container/Contact';
 import theme from '@/styles/theme';
 
 const Hero = ({ data = {} }) => {
@@ -21,9 +21,6 @@ const Hero = ({ data = {} }) => {
 	return (
 		<>
 			<section className="homepage-hero f-v f-j-e gap-gutter">
-				{/* <h1 className="homepage-hero-title">
-					<AnimatedSplitText yTransform="6vw">{site.title}</AnimatedSplitText>
-				</h1> */}
 				{(intro || aboutCTA) && (
 					<div
 						ref={ref}
@@ -49,7 +46,8 @@ const Hero = ({ data = {} }) => {
 				.homepage-hero {
 					position: relative;
 					width: 100vw;
-					min-height: var(--s-vp-height);
+					// min-height: var(--s-vp-height);
+					height: 100vh;
 					padding: var(--s-gutter-md);
 					overflow: hidden;
 
@@ -75,6 +73,7 @@ function IndexPage({ data }) {
 		<div className="homepage">
 			<Hero data={data} />
 			<WorkList data={data.page.works} />
+			{data.site.email && <Contact data={data.site} />}
 		</div>
 	);
 }

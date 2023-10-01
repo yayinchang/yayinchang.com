@@ -17,6 +17,12 @@ export default {
 			type: 'string',
 		},
 		{
+			title: 'Email Description',
+			name: 'emailDescription',
+			type: 'text',
+			rows: 2,
+		},
+		{
 			title: 'Social Links',
 			name: 'social',
 			type: 'array',

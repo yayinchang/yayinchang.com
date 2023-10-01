@@ -257,7 +257,8 @@ const About = ({ data = {} }) => {
 					}
 
 					:global(.scroller) {
-						height: var(--s-vp-height);
+						//height: var(--s-vp-height);
+						height: 100vh;
 						will-change: transform;
 					}
 
